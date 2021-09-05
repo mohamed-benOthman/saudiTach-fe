@@ -1,0 +1,38 @@
+
+<section *ngIf="this.error==true" class="bg-home d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12 text-center">
+                <img  style="width: 35vw" src="../../assets/img/404.svg" class="img-fluid" alt="">
+                <div class="text-uppercase mt-4 display-3">Oh ! no</div>
+                <div class="text-capitalize text-dark mb-4 error-page">Page Not Found</div>
+
+            </div><!--end col-->
+        </div><!--end row-->
+
+
+    </div><!--end row-->
+
+</section><!--end section-->
+<section *ngIf="error==false" class="reset" [hidden]="updating">
+    <h3 class="title-reset">{{ 'reset.title' | translate }}</h3>
+    <form [formGroup]="resetFormGeralGroup">
+        <mat-form-field class="reset-field-total" appearance="outline">
+            <mat-label class="reset-label">{{ 'reset.field_password' | translate }}</mat-label>
+            <mat-icon matPrefix class="reset-icon">lock</mat-icon>
+            <input autocomplete="off" matInput type="password" placeholder="{{ 'reset.field_password' | translate }}" formControlName="password">
+        </mat-form-field>
+        <mat-form-field class="reset-field-total" appearance="outline">
+            <mat-label class="reset-label">{{ 'reset.field_confirm_password' | translate }}</mat-label>
+            <mat-icon matPrefix class="reset-icon">lock</mat-icon>
+            <input autocomplete="off" matInput type="password" placeholder="{{ 'reset.field_confirm_password' | translate }}" formControlName="confirmPassword">
+        </mat-form-field>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <button (click)="reset()" [disabled]="resetFormGeralGroup.invalid" class="reset-button" mat-raised-button>{{ 'reset.button_reset' | translate }}</button>
+</section>
+<section class="reset" [hidden]="!updating">
+    <mat-spinner class="green-spinner"></mat-spinner>
+</section>

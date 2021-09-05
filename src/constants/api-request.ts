@@ -1,0 +1,40 @@
+export const apiRequests = {
+    user: {
+        register: '/api/user',
+        oathRegister: '/api/user/oathSignup',
+        sendContactEmail: '/api/user/sendContactEmail',
+        getProfileById: '/api/user/getProfileById',
+        changePassword: '/api/user/changePassword',
+        changeActivation: '/api/user/changeActivation',
+        validate: '/urac/validate/join',
+        forgot: '/api/user/sendResetEmail',
+        reset: '/api/user/resetPassword',
+        resendConfirmation: '/api/user/resendConfirmationEmail',
+        updatePassword: '/urac/account/password',
+        update: '/api/user/modify',
+        login: '/oauth/token',
+        login2: '/api/user/login',
+        ckeckEmail: '/api/user/checkEmail',
+        is_authenticated: '/urac/user?username=:username',
+        get: '/urac/admin/getUser?uId=:id',
+        sendEmail: '/urac/email',
+        count: '/search/count',
+        googleLogin: '/api/user/loginOath',
+        list: '/search/search',
+        resend: '/api/user/send',
+        addNbVisted: '/api/user/nbVisited',
+        getUsers: '/api/user/getUsers',
+        checkUsername: '/urac/checkUsername',
+        confirmUser: '/api/user/confirmUser',
+        emailToken: '/urac/emailToken',
+        googleValidate: '/oauth/passport/validate/google',
+        getFilteredUsers: '/api/user/filterUsers',
+        twitterLogin: '/auth/twitter',
+        linkedinLogin: '/auth/linkedin',
+        twitterValidate: '/auth/twitter/callback',
+        linkedinValidate: '/auth/linkedin/callback',
+
+        checkResetToken: '/api/user/checkResetPasswordToken'
+
+    }
+};

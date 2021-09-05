@@ -1,0 +1,24 @@
+
+<mat-dialog-content class="pr-lg-5 pt-3">
+    <form [formGroup]="agreementForm">
+    <div class="col-lg-12 mb-3  pr-lg-5 pt-3 mr-lg-5 ">
+        <mat-checkbox style="display: flex; flex-direction: row"   formControlName="personCheck" (change)="personCheck=$event.checked" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"  [(ngModel)]="personCheck" [dir]="(storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'" >{{ 'signup.personCheck' | translate }}  </mat-checkbox>
+    </div>
+    <div class="col-lg-12 mb-3 pr-lg-5">
+        <mat-checkbox style="display: flex;"   formControlName="technicalCheck" [dir]="(storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" (change)="technicalCheck =$event.checked ">{{ 'signup.technicalCheck' | translate }}  </mat-checkbox>
+    </div>
+    <div class="col-lg-12 mb-3  pr-lg-5 ">
+        <mat-checkbox  style="display: flex;"    formControlName="cofounderCheck" [dir]="(storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" (change)="cofounderCheck =$event.checked">{{ 'signup.cofounderCheck' | translate }}</mat-checkbox>
+    </div>
+        <div class="col-lg-12 mb-3  pr-lg-5 ">
+            <h6 style="display: flex;"  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" >{{ 'signup.condition' | translate }}</h6>
+        </div>
+        </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <div class="col-lg-6 col-12 mb-3  justify-content-center  ">
+    <button (click)="navigateToHome()"   matDialogClose  class="btn btn-outline-primary btn-block">{{ 'signup.homePage' | translate }}</button>
+    <button  matDialogClose  [disabled]="!personCheck ||  !technicalCheck || !cofounderCheck "  class="btn btn-primary btn-block">{{ 'signup.confirm' | translate }}</button>
+    </div>
+</mat-dialog-actions>

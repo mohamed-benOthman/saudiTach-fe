@@ -1,0 +1,156 @@
+<!--
+<section class="home center-content">
+    <h1 class="home-title">{{ 'home.title1' | translate }}</h1>
+    <h1 class="home-title2">{{ 'home.title2' | translate }}</h1>
+    <img src="../../assets/img/home.png" />
+    <h3 class="are-you-tech">{{ 'home.are_you_tech' | translate }}</h3>
+    <button class="home-signup" (click)="toSignup()" mat-raised-button>{{ 'global.signup' | translate }}</button>
+    <h3 class="are-you-looking">{{ 'home.are_you_looking' | translate }}</h3>
+    <button class="home-search" (click)="toSearch()" mat-raised-button>
+        <mat-icon>search</mat-icon>{{ 'home.search' | translate }}
+    </button>
+    <h3 class="home-partners">{{ 'global.our_partners' | translate }}</h3>
+    <div class="partner-list">
+        <div *ngFor="let partner of partnersList">
+            <a target="_blank" href="{{partner.site}}">
+                <img style="max-width: 200px;" alt="{{partner.alt}}" src="{{partner.logo}}">
+            </a>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</section>-->
+<div  [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" *ngIf="this.innerWidth>900" class="  pt-5  pr-5 pl-5  pb-5 ">
+    <div class="row  ">
+    <div class="col-xl-6 col-12 pr-5 pl-5" style="margin-bottom: 40px">
+        <div  class=" justify-content-start w-100 mb-4 pb-5 pb-sm-0">
+            <h1 class="home-title " [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'home.title1' | translate }}&#13;</h1>
+            <br>
+            <h1 class="home-title2" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'home.title2' | translate }}</h1>
+        </div>
+        <div [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" class="subtitle mt-3 mb-3" >
+            <h3 class="are-you-tech mb-2" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'home.are_you_tech' | translate }}</h3>
+               <br *ngIf="this.innerWidth>1200">
+            <h3 class="are-you-tech "   style=" margin-top:-30px;color: #F53838;" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'home.only-technical' | translate }}</h3>
+        </div>
+         <div class="w-50 signupButton">
+        <button class="home-signup w-45 signupButton " (click)="toSignup()" mat-raised-button>{{ 'global.signup' | translate }}</button>
+         </div>
+         </div>
+        <div class="vl"></div>
+
+
+    <div class="col-xl-5 col-12 pr-5 pl-5 justify-content-around  pt-5 " style="margin-bottom: 100px" >
+
+        <div class=" mb-4 justify-content-center pr-3 w-75  mb-5" >
+            <h1 class="home-title2" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'home.are_you_looking' | translate }}</h1>
+        </div>
+        <div  class="justify-content-center pr-3">
+            <div class="w-50 ">
+                <button class="home-signup" (click)="toSearch()" mat-raised-button>
+                    <mat-icon>search</mat-icon>{{ 'home.search' | translate }}
+                </button>
+            </div>
+        </div>
+
+    </div>
+   <!-- <div  style="flex-direction: column" class=" d-flex justify-content-between w-50">
+        <div class="w-100 d-flex justify-content-center">
+        <img class="w-75" src="../../assets/img/startupLife.svg" />
+        </div>
+    </div>-->
+    </div>
+</div>
+<!--<div [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  *ngIf="this.innerWidth>900" class="d-flex justify-content-between  pl-5  pt-5 pr-5  " style="background-color: #ffffff">
+
+    &lt;!&ndash;<div  style="flex-direction: column" class=" d-flex justify-content-between w-50 pr-5">
+        <div class="w-100 d-flex justify-content-center">
+            <img class="w-75" src="../../assets/img/searchEngine.svg" />
+        </div>
+    </div>&ndash;&gt;
+    <div style="flex-direction: column" class="d-flex justify-content-center w-50 ">
+        <div class="d-flex justify-content-center w-75 mb-4" >
+            <h1 class="home-title2" style="text-align: center">{{ 'home.are_you_looking' | translate }}</h1>
+        </div>
+        <div class=" w-75 d-flex justify-content-center">
+        <div class="w-50 ml-2">
+        <button class="home-signup" (click)="toSearch()" mat-raised-button>
+            <mat-icon>search</mat-icon>{{ 'home.search' | translate }}
+        </button>
+        </div>
+        </div>
+    </div>
+</div>-->
+<!--<div [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  *ngIf="this.innerWidth<=900 && this.innerWidth>=500 " class=" pl-4 pr-4 pb-4">
+   &lt;!&ndash; <div>
+        <div class="w-lg-100 d-flex justify-content-center">
+            <img class="w-lg-75 w-50 image" src="../../assets/img/startupLife.svg" />
+        </div>
+    </div>&ndash;&gt;
+       <div>
+
+            <h1 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="home-title ">{{ 'home.title1' | translate }}</h1>
+            <h1 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"class="home-title3">{{ 'home.title2' | translate }}</h1>
+
+        <div class="subtitle mt-3 mb-3">
+            <h3 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="are-you-tech">{{ 'home.are_you_tech' | translate }}</h3>.
+            <h3 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="are-you-tech" style="margin-top:-30px;color: #F53838">{{ 'home.only-technical' | translate }}</h3>
+        </div>
+        <button class="home-signup " (click)="toSignup()" mat-raised-button>{{ 'global.signup' | translate }}</button>
+    </div>
+
+
+</div>-->
+<!--<div [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"   *ngIf="this.innerWidth<=900 && this.innerWidth>=500 " class="pl-4 pt-5 pr-4  mb-3" style="background-color: #ffffff">
+ &lt;!&ndash;   <div>
+        <div class="w-lg-100 d-flex justify-content-center mb-4">
+            <img class="w-lg-75 w-50" src="../../assets/img/searchEngine.svg" />
+        </div>
+    </div>&ndash;&gt;
+
+        <div class="d-flex justify-content-center w-100 mb-4">
+            <h1 class="home-title2" style="text-align: center">{{ 'home.are_you_looking' | translate }}</h1>
+        </div>
+                <button class="home-signup" (click)="toSearch()" mat-raised-button>
+                    <mat-icon>search</mat-icon>{{ 'home.search' | translate }}
+                </button>
+
+
+</div>-->
+<section *ngIf="this.innerWidth<900" class="home center-content">
+    <div [ngStyle]="{'direction':(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" >
+
+    <h1  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="home-title " >{{ 'home.title1' | translate }}</h1>
+    <h1 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="home-title3 mb-2" >{{ 'home.title2' | translate }}</h1>
+    <div class="d-flex justify mb-4">
+        <h3 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="are-you-tech  " style="text-align: left">{{ 'home.are_you_tech' | translate }}</h3>
+        <h3 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="are-you-tech" style="color: #F53838; text-align: left" >{{ 'home.only-technical' | translate }}</h3>
+    </div>
+<!--
+    <img src="../../assets/img/startupLife.svg" />
+-->
+    <button class="home-signup mb-5" (click)="toSignup()"  mat-raised-button>{{ 'global.signup' | translate }}</button>
+<div >
+
+    <div class="mt-4 mb-5" >
+        <h1 [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'center' }" class="home-title2 mb-3" style="text-align: left">{{ 'home.are_you_looking' | translate }}</h1>
+    </div>
+
+    <!--<img  src="../../assets/img/searchEngine.svg" />-->
+    <button class="home-signup" (click)="toSearch()" mat-raised-button>
+        <mat-icon>search</mat-icon>{{ 'home.search' | translate }}
+    </button>
+
+</div>
+    </div>
+</section>
+<div class="all-partners">
+<h3 class="home-partners">{{ 'global.our_partners' | translate }}</h3>
+<div class="partner-list">
+    <div *ngFor="let partner of partnersList">
+        <a target="_blank" href="{{partner.site}}">
+            <img style="max-width: 200px;" alt="{{partner.alt}}" src="{{partner.logo}}">
+        </a>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,75 @@
+
+<mat-card class="p-0">
+  <div class="page-card-header d-flex justify-content-between">
+    <mat-icon (click)="navigateBack()" style="cursor: pointer;" [inline]="true">keyboard_arrow_left</mat-icon>
+    <span class="flex-1 title-edit-personal">{{ 'profile.editPersonal.title' | translate }}</span>
+  </div>
+  <mat-card-content style="padding: 15px;">
+    <form [formGroup]="editFormGeralGroup">
+      <mat-form-field   [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"  class="edit-profile-field-total" appearance="outline">
+        <mat-label  class="edit-profile-label">{{ 'profile.editPersonal.field_firstName' | translate }}</mat-label>
+        <mat-icon matPrefix class="edit-profile-icon">account_box</mat-icon>
+        <input [(ngModel)]="curUser.firstName" autocomplete="off" matInput placeholder="{{ 'profile.editPersonal.field_firstName' | translate }}" formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="edit-profile-field-total" appearance="outline">
+        <mat-label class="edit-profile-label">{{ 'profile.editPersonal.field_lastName' | translate }}</mat-label>
+        <mat-icon matPrefix class="edit-profile-icon">account_box</mat-icon>
+        <input [(ngModel)]="curUser.lastName"autocomplete="off" matInput placeholder="{{ 'profile.editPersonal.field_lastName' | translate }}" formControlName="lastName">
+      </mat-form-field>
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-icon matPrefix class="edit-profile-icon">location_on</mat-icon>
+			  <mat-select [(ngModel)]="curUser.country" (selectionChange)="loadCities($event.value)" placeholder="{{ 'profile.editPersonal.field_country' | translate }}" formControlName="country">
+				  <mat-option *ngFor="let country of countries" [value]="country.country">
+				  	{{ country.country }}
+				  </mat-option>
+			  </mat-select>
+		  </mat-form-field>
+		  <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-icon matPrefix class="edit-profile-icon">location_on</mat-icon>
+			  <mat-select [(ngModel)]="curUser.city" placeholder="{{ 'profile.editPersonal.field_city' | translate }}" formControlName="city">
+			  	<mat-option *ngFor="let city of cities" [value]="city.name">
+			  		{{ city.name }}
+			  	</mat-option>
+			  </mat-select>
+      </mat-form-field>
+
+            <div  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" class="form-group position-relative">
+                <label  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start'  }">{{ 'signup.image' | translate }}</label>
+
+                <!--<input  class="form-control pl-5" type="file " name="file" placeholder="{{ 'signup.image' | translate }}" formControlName="profileImage" required="">-->
+                <div class="row">
+                    <div class="col-11">
+                        <input class="form-control "   type="file" name="file" (change)="uploadFile($event)">
+                    </div>
+                    <div class="col-1 mt-2" style="flex-direction: column" style="padding:0px !important">
+                        <span  class="w-100">{{this.uploadPourcentage}}%</span>
+                    </div>
+                </div>
+            </div>
+
+
+    </form>
+      <ng-container *ngIf="curUser.socialLogin==false" >
+    <br/>
+    <br/>
+          <div style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }">
+      <span style="cursor: pointer"  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"   class="flex-1  passwordClass"   (click)="editSecurityClicked()">{{ 'profile.editPersonal.change_password' | translate }}</span>
+          </div>
+      </ng-container>
+      <br/>
+      <br/>
+
+      <div  class="w-100 d-flex justify-content-between">
+          <span  class="flex-1  activationClass"  *ngIf="activated==false" style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"   >{{   'profile.editPersonal.deactivated' | translate }}</span>
+          <span  class="flex-1  activationClass" *ngIf="activated==true" style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"   >{{   'profile.editPersonal.activated' | translate }}</span>
+          <mat-slide-toggle  color="success" [ngModel]="curUser.activated"  (change)="slideChange($event);"></mat-slide-toggle>
+      </div>
+
+
+      <br/>
+    <br/>
+      <div class="row w-100 justify-content-center">
+    <button  (click)="update()" [disabled]="editFormGeralGroup.invalid || !hasProfileChanges() ||  editFormGeralGroup.value.city==null " class="update-button w-50" mat-raised-button>{{ 'profile.editPersonal.save' | translate }}</button>
+      </div>
+  </mat-card-content>
+</mat-card>

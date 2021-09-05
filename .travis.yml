@@ -1,0 +1,14 @@
+language: node_js
+
+node_js: 12
+
+jobs:
+  include:
+
+  - stage: Continuous Delivery
+    if: branch =~ /(develop)/
+    script:
+    - export SOAJS_repo_branch=$TRAVIS_BRANCH
+    - export SOAJS_repo_commit=$TRAVIS_COMMIT
+    - echo "CD with SOAJS"
+    - node soa.cd.js

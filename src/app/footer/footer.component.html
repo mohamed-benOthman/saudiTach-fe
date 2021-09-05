@@ -1,0 +1,39 @@
+
+<footer class="main-footer">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <h2 class="footer-company-information">{{ 'footer.company_information' | translate }}</h2>
+
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12 col-12 ">
+                <div class="row justify-content-around  pl-md-1 pr-md-1">
+                <h2 class="footer-links " (click)="navigate('us')">{{ 'global.about_us' | translate }}</h2>
+
+                <h2 class="footer-links " (click)="navigate('partners')">{{ 'global.our_partners' | translate }}</h2>
+
+                <div class="row pt-3 ">
+                    <a  href="https://www.twitter.com/IMATECOrocks" style="text-underline: none">
+                    <h2 class="footer-links "  class="footer-follow pt-1 pr-1">{{ 'global.follow_us' | translate }}</h2>
+                    </a>
+                        <div class="copy-right  " >
+                        <a  href="https://www.twitter.com/IMATECOrocks " target="_blank">
+                            <img class="twitter-link" src="../../assets/img/002-twitter.png" />
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span style="display:inline-block; height: 20px;"></span>
+</footer>

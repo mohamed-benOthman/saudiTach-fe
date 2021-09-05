@@ -1,0 +1,161 @@
+.home-title {
+    color: #37A11A;
+    margin-bottom: -5px;
+    font-size: 24pt;
+    font-weight: 600;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.home-title2 {
+    color: black;
+
+    font-size: 24pt;
+    font-weight: 600;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.looking{
+    border-left: 2px solid green;
+}
+
+.vl {
+
+    background-color: #37A11A;
+    width: 2px;
+    height: 300px;
+    margin-right: 5px;
+    opacity: 50%;
+}
+
+@media screen and (max-width: 1200px) {
+    .vl{
+        display: none;
+    }
+
+    .home-signup .are-you-tech {
+        margin-top: 30px !important;
+    }
+
+    .are-you-tech{
+        margin-top: 30px !important;
+    }
+
+
+    .home-partners{
+        margin-top: 30px !important;
+    }
+
+    .home-title2{
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+
+.home-title3 {
+    color: black;
+
+    font-size: 24pt;
+    font-weight: 600;
+    font-family: Montserrat, SemiBold !important;
+}
+.are-you-tech {
+    color: black;
+    font-size: 18pt;
+
+    width: 100%;
+    font-weight: 500;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.are-you-looking {
+    color: black;
+    font-size: 13pt;
+    text-align: center;
+    padding-top: 20px;
+    width: 100%;
+    font-weight: 500;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.home-signup {
+    background-color: #37A11A;
+    color: white;
+    font-size: 13pt;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.home-search {
+    color: #37A11A;
+    font-size: 13pt;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.home-partners {
+    color: black;
+    font-size: 13pt;
+    text-align: center;
+    padding-top: 40px;
+    width: 100%;
+    font-weight: 600;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.partner-list {
+    display: grid;
+}
+
+.partner-list div {
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 800px) {
+    .home-title{
+        font-size: 20pt;
+    }
+    .home-title2{
+        font-size: 20pt;
+    } .home-title3{
+          font-size: 20pt;
+      }
+    .are-you-tech{
+        font-size: 16pt;
+    }
+
+}
+
+
+@media only screen and (device-width : 414px) and (device-height : 896px) and (-webkit-device-pixel-ratio : 3) {
+.image{
+    margin-top: -25px !important;
+    margin-bottom: -25px !important;
+}
+
+}
+@media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+    .image{
+        margin-top: -25px !important;
+        margin-bottom: -25px !important;
+    }
+}
+@media only screen and (device-width : 414px)
+and (device-height : 896px) and (-webkit-device-pixel-ratio : 2) {
+    .image{
+        margin-top: -25px !important;
+        margin-bottom: -25px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px){
+.all-partners{
+    margin-top: -160px !important;
+}
+}

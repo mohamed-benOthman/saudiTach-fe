@@ -1,0 +1,44 @@
+.aboutus-img {
+    margin-top: -40px;
+    margin-left: -180px;
+    width: 375px;
+    display: flex;
+    position: relative;
+    left: 50%;
+}
+
+.aboutus-title {
+    color: black;
+    font-size: 20pt;
+    text-align: left;
+    margin-top: -40px;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.aboutus-description {
+    color: black;
+    font-size: 12pt;
+    text-align: left;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.aboutus-twitter {
+    color: black;
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 30px;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.twitter-link {
+    padding-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

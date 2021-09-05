@@ -1,0 +1,212 @@
+.edit-profile-field-total {
+    width: 100%;
+}
+
+.search-icon {
+    background-color: #37A11A;
+    color: white;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.button-load-more {
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLink:hover{
+        color:#37a11a !important;
+}
+.text-ellipsis--2{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #37A11A;
+}
+
+::ng-deep .mat-form-field .mat-focused .mat-primary .mat-select-arrow {
+    color: #37A11A !important;
+}
+::ng-deep .mat-select-arrow {
+   color: rgba(0,0,0,.54) !important;
+}
+
+
+
+
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+
+.mat-card-avatar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.pagination .page-item .page-link{
+    background-color: #0f131f !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #37a11a !important;
+    border-color: #37a11a !important;
+}
+@media screen and (max-width: 500px) {
+    .pagination{
+        display: none;
+    }
+
+}
+.pagination .page-item .page-link{
+    z-index: 3;
+    color: #fff;
+    background-color: #37a11a !important;
+    border-color: #37a11a !important;
+}
+.card-avatar {
+    background-size: cover;
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    margin-right: 16px;
+}
+
+.button-load-more button {
+    background-color: #37A11A;
+}
+
+.search-field-total {
+    width: 70%;
+}
+
+::ng-deep .search .mat-form-field-flex {
+    font-family: Montserrat, SemiBold !important;
+    height: 45px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+::ng-deep .search .mat-form-field-infix {
+    padding: 0.5em 0;
+    border-top: .84375em solid transparent;
+}
+
+::ng-deep .search .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0;
+}
+
+::ng-deep .search .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding-right: 0 !important;
+}
+
+::ng-deep .search .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #37A11A !important;
+}
+
+::ng-deep .search .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #37A11A !important;
+}
+
+::ng-deep .mat-dialog-container {
+    padding-top: 0px !important;
+}
+
+::ng-deep .mat-expansion-panel-header {
+    height: 80px !important;
+    font-family: Montserrat, SemiBold !important;
+  }
+
+::ng-deep .mat-expansion-indicator::after {
+    color: #37A11A !important;
+}
+
+::ng-deep .mat-dialog-content {
+    max-height: none !important;
+}
+
+.user-name {
+    font-family: Montserrat, SemiBold !important;
+    font-size: 16pt;
+    margin: 0;
+    color: #37A11A;
+  }
+
+  .user-location {
+    font-family: Montserrat, SemiBold !important;
+    font-size: 10pt;
+    margin: 0;
+  }
+
+  .user-description {
+    font-family: Montserrat, SemiBold !important;
+    font-size: 10pt;
+    margin: 0;
+    word-break: break-all;
+  }
+
+.profile-prop {
+    font-size: 10pt;
+    padding-left: 5px;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.user-details {
+    font-size: 10pt;
+    color: #37A11A;
+    margin: 0;
+    font-family: Montserrat, SemiBold !important;
+  }
+
+  .contact-button {
+    background-color: white;
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    bottom: 0;
+    padding-top: 8px;
+  }
+
+  .contact-button button {
+    background-color: #37A11A;
+    color: white;
+    font-size: 10pt;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+  }
+
+  .search-box {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    padding: 15px 10px;
+    height: 50px;
+    z-index: 10;
+  }
+
+.green-spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #37A11A !important;
+}
+li> .h6{
+    margin-right: -20px !important;
+}

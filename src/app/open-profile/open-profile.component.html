@@ -1,0 +1,151 @@
+<div *ngIf="!userProfile" class="d-flex  green-spinner ">
+    <mat-spinner color="accent"></mat-spinner>
+</div>
+<div *ngIf="userProfile" [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'">
+    <div class="infos">
+        <mat-card class="p-0">
+            <div class="page-card-header d-flex justify-content-between" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row' }">
+                <mat-icon (click)="navigateBack()" style="cursor: pointer" [inline]="true">keyboard_arrow_left</mat-icon>
+                <span class="flex-1 title-show-profile">{{ 'search.profile.title' | translate }}</span>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div class="mt-5 mb-15 custom-card-header justify-content-between">
+                <div class="d-flex">
+                    <img mat-card-avatar class="card-avatar" [src]="getUserPicture()" >
+                <div>
+                    <mat-card-title>{{ userProfile.firstName }} {{ userProfile.lastName }}</mat-card-title>
+                    <mat-card-subtitle class="second-title">
+                    <mat-icon class="pin-icon">location_on</mat-icon>
+                    {{ (userProfile.country? userProfile.country : '-') }}{{',   '}}{{ (userProfile.city? userProfile.city : '-') }}
+                    </mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="userProfile.country">{{getLocalTime(userProfile.country)}} local time</mat-card-subtitle>
+                </div>
+                </div>
+            </div>
+            <mat-card-content>
+                <div class="d-flex">
+                <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex">
+                <div class="ptb-20 profile-description" *ngIf="userProfile.tellMore">
+                    {{ userProfile.tellMore }}
+                </div>
+                <div class="ptb-20 profile-description" *ngIf="!userProfile.tellMore">
+                    -
+                </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="d-flex">
+                <div class="ptb-20 social-links">
+                    <b>{{ 'profile.social_links' | translate }}</b>
+                </div>
+                </div>
+                <div class="d-flex" style="padding-bottom: 20px;">
+                    <div class="social-links" *ngIf="!userProfile.linkedInProfile && !userProfile.twitter">
+                        -
+                    </div>
+                </div>
+                <div class="d-flex" style="padding-bottom: 20px;">
+                    <div class="col-6">
+                        <div style="word-break: break-all;" [hidden]="!userProfile.linkedInProfile" [ngStyle]="{'float':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"><img src="../../assets/img/linkedin-profile.svg"/><a style="text-decoration: none; color: #37a11a;" href="https://linkedin.com/in/{{ userProfile.linkedInProfile }}" target="_blank"> /{{ userProfile.linkedInProfile }}</a></div>
+                    </div>
+                    <div class="col-6">
+                        <div style="word-break: break-all;" [hidden]="!userProfile.twitter" [ngStyle]="{'float':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"><img src="../../assets/img/001-twitter-profile.svg"/><a style="text-decoration: none; color: #37a11a;" href="https://twitter.com/{{ userProfile.twitter }}" target="_blank"> /{{ userProfile.twitter }}</a></div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex" style="column-count: 2; padding-top: 10px;">
+                <div style="width: 90%;">
+                    <p class="width:100%"  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.yearsExperience' | translate }}</span><span class="profile-prop">{{ userProfile.yearsExperience? userProfile.yearsExperience : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.workedStartup' | translate }}</span><span class="profile-prop">{{ userProfile.startupExperience? ('profile.expertise.'+userProfile.startupExperience | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.commitFulltime' | translate }}</span><span class="profile-prop">{{ userProfile.commitFulltime? ('profile.expertise.'+userProfile.commitFulltime | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.willingRelocate' | translate }}</span><span class="profile-prop">{{ userProfile.relocate? ('profile.expertise.'+userProfile.relocate | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.equity' | translate }}</span><span class="profile-prop">{{ userProfile.equity? ('profile.expertise.'+userProfile.equity | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.whenStart' | translate }}</span> <span class="profile-prop">{{ userProfile.whenStart? ('profile.expertise.'+userProfile.whenStart | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.remote' | translate }}</span> <span class="profile-prop">{{ userProfile.remote? ('profile.expertise.'+userProfile.remote | translate) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.bestAt' | translate }}</span> <span class="profile-prop">{{ userProfile.bestAt? (userProfile.bestAt ) : '-' }}</span></p>
+                    <p  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start ' }"><span class="green-heading">{{ 'profile.nbVisits' | translate }}</span> <span class="profile-prop">{{ userProfile.nbVisits? (userProfile.nbVisits ) : '0' }}</span></p>
+
+
+
+
+                </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card *ngIf="userProfile.frontend" class="profile-prop-card mtb-15 p-0">
+            <mat-card-header style="background-color: #FFFFFF" class="profile-prop-card-header mb-2">
+                <div  class="profile-prop-card-header-content">
+                    <span><b style="font-size: 18px">{{ 'profile.skills' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-header class="profile-prop-card-header">
+                <div class="profile-prop-card-header-content">
+                    <span><b>{{ 'profile.frontend' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="profile-prop-card-content">
+                <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+                    <mat-chip *ngFor="let fe of userProfile.frontend" color="primary" selected>{{ fe }}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userProfile.backend" class="profile-prop-card mtb-15 p-0">
+            <mat-card-header class="profile-prop-card-header">
+                <div class="profile-prop-card-header-content">
+                    <span><b>{{ 'profile.backend' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="profile-prop-card-content">
+                <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+                    <mat-chip *ngFor="let fe of userProfile.backend" color="primary" selected>{{ fe }}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userProfile.design" class="profile-prop-card mtb-15 p-0">
+            <mat-card-header class="profile-prop-card-header">
+                <div class="profile-prop-card-header-content">
+                    <span><b>{{ 'profile.design' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="profile-prop-card-content">
+                <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+                    <mat-chip *ngFor="let fe of userProfile.design" color="primary" selected>{{ fe }}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userProfile.devops" class="profile-prop-card mtb-15 p-0">
+            <mat-card-header class="profile-prop-card-header">
+                <div class="profile-prop-card-header-content">
+                    <span><b>{{ 'profile.devops' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="profile-prop-card-content">
+                <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+                    <mat-chip *ngFor="let fe of userProfile.devops" color="primary" selected>{{ fe }}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userProfile.database" class="profile-prop-card mtb-15 p-0">
+            <mat-card-header class="profile-prop-card-header">
+                <div class="profile-prop-card-header-content">
+                    <span><b>{{ 'profile.database' | translate }}</b></span>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="profile-prop-card-content">
+                <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+                    <mat-chip *ngFor="let fe of userProfile.database" color="primary" selected>{{ fe }}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="contact-button pb-5" style="padding-bottom: 15px">
+        <div style="margin-bottom: 20px">
+        <button class="mb-5" (click)="goToContactPage()" mat-raised-button>{{ 'search.profile.contact' | translate }}</button>
+        </div>
+    </div>
+</div>

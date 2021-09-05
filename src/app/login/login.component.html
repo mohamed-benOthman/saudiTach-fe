@@ -1,0 +1,74 @@
+
+<section class="bg-home d-flex align-items-center "  style="padding-top: 0px !important">
+    <div [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'"  class="container "class="container mt-sm-5 mt-2">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-5 col-md-6">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{ 'global.login' | translate }}</h4>
+                        <form class="login-form mt-4" [formGroup]="loginFormGroup">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'login.field_login' | translate }} <span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/mail.svg" class="fea icon-sm icons" />
+                                        <input type="email" class="form-control pl-5" formControlName="email" placeholder="{{ 'login.field_login' | translate }}" name="email" required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label  style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'login.field_password' | translate }} <span class="text-danger">*</span></label>
+
+                                        <img src="./../../assets/img/key.svg"  class="fea icon-sm icons" />
+                                        <input type="password" class="form-control pl-5" formControlName="password"  placeholder="{{ 'login.field_password' | translate }}" required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <p class="forgot-pass mb-0"><a routerLink="/forgot" class="text-dark font-weight-bold">{{ 'global.forgot' | translate }}</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-0">
+                                    <button  (click)="login()" [disabled]="loginFormGroup.invalid"  class="btn btn-primary btn-block">{{ 'global.login' | translate }}</button>
+                                </div>
+                                <div class="col-lg-12 mt-4 text-center">
+<!--
+                                    <h6>Or Login With</h6>
+-->
+<!--                                    <ul class="list-unstyled social-icon mb-0 mt-3">
+                                        <li class="list-inline-item"><a (click)="socialLoginTwitter()" class="rounded mr-2"><img src="../../assets/img/twitter.svg" class="fea icon-sm fea-social" /></a></li>
+                                        <li class="list-inline-item"><a (click)="socialLoginLinkedin()" class="rounded"><img src="../../assets/img/linkedin.svg" class="fea icon-sm fea-social" /></a></li>
+
+                                        &lt;!&ndash;
+                                        <li class="list-inline-item"><a  (click)="socialLoginGoogle()" class="rounded"><img src="../../assets/img/google-brands.svg" class="fea icon-sm fea-social" /></a></li>
+&ndash;&gt;
+                                    </ul>&lt;!&ndash;end icon&ndash;&gt;-->
+                                    <h6>{{'login.login_with' | translate}}</h6>
+                                    <div class="row  justify-content-between">
+                                        <div class="col-12 " >
+                                            <a  class="social-button "  (click)="socialLoginTwitter()" id="twitter-connect"> <span >Twitter</span></a>
+
+                                        </div>
+                                        <div class="col-12" >
+                                            <a  class="social-button  " (click)="socialLoginLinkedin()"  id="linkedin-connect"> <span>LinkedIn</span></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <p class="mb-0 mt-3"><small class="text-dark mr-2">{{'login.no_account' | translate}}</small> <a routerLink="/signup" class="text-dark font-weight-bold">&nbsp;{{'login.new_account' | translate}}</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div> <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<script src="../../assets/js/feather.min.js"></script>

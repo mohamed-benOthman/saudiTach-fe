@@ -1,0 +1,140 @@
+<mat-card mat-dialog-content class="p-0" style="padding-bottom: 60px !important;">
+    <div style="padding-left: 15px;" class="page-card-header d-flex justify-content-between">
+        <span class="filter-title">{{ 'profile.filter.title' | translate }}</span>
+        <mat-icon (click)="close()" class="filter-icon-close">close</mat-icon>
+    </div>
+    <mat-card-content style="padding: 15px;">
+        <div class="row" style="padding: 12px 24px;">
+            <mat-chip-list>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('yearsExperience')" *ngIf="data.yearsExperience">
+                    {{ data.yearsExperience }} y
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('workedStartup')" *ngIf="data.workedStartup">
+                    {{ 'profile.filter.workedStartup' | translate }} - {{ 'profile.filter.'+data.workedStartup | translate }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('commitFulltime')" *ngIf="data.commitFulltime">
+                    {{ 'profile.filter.commitFulltime' | translate }} - {{ 'profile.filter.'+data.commitFulltime | translate }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('willingRelocate')" *ngIf="data.willingRelocate">
+                    {{ 'profile.filter.willingRelocate' | translate }} - {{ 'profile.filter.'+data.willingRelocate | translate }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('equity')" *ngIf="data.equity">
+                    {{ 'profile.filter.equity' | translate }} - {{ 'profile.filter.'+data.equity | translate }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('whenStart')" *ngIf="data.whenStart">
+                    {{ 'profile.filter.'+data.whenStart | translate }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <mat-chip class="grey-chip" removable="true" (removed)="remove('location')" *ngIf="data.location">
+                    {{ data.location }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.location' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+              <mat-form-field style="min-width: 100%;" appearance="outline">
+                  <mat-select [(ngModel)]="data.location">
+                      <mat-option *ngFor="let country of countries" [value]="country.country">
+                          {{ country.country }}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.yearsExperience' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" horizontal [(ngModel)]="data.yearsExperience">
+                  <mat-button-toggle [ngClass]="data.yearsExperience=='1-3'? 'selected' : ''" style="min-width: 33%;" value="1-3">1-3</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.yearsExperience=='3-7'? 'selected' : ''" style="min-width: 33%;" value="3-7">3-7</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.yearsExperience=='7+'? 'selected' : ''" style="min-width: 33%;" value="7+">7+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.workedStartup' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" horizontal [(ngModel)]="data.workedStartup">
+                  <mat-button-toggle [ngClass]="data.workedStartup=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.filter.yes' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.workedStartup=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.filter.no' | translate }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.willingRelocate' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" horizontal [(ngModel)]="data.willingRelocate">
+                  <mat-button-toggle [ngClass]="data.willingRelocate=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.filter.yes' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.willingRelocate=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.filter.no' | translate }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.commitFulltime' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" horizontal [(ngModel)]="data.commitFulltime">
+                  <mat-button-toggle [ngClass]="data.commitFulltime=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.filter.yes' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.commitFulltime=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.filter.no' | translate }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.equity' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" horizontal [(ngModel)]="data.equity">
+                  <mat-button-toggle [ngClass]="data.equity=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.filter.yes' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.equity=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.filter.no' | translate }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12">
+            <b>{{ 'profile.filter.whenStart' | translate }}</b>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+          <div class="col-12" style="padding-bottom: 1.34375em;">
+              <mat-button-toggle-group style="min-width: 100%;" vertical [(ngModel)]="data.whenStart">
+                  <mat-button-toggle [ngClass]="data.whenStart=='immediately'? 'selected' : ''" value="immediately">{{ 'profile.filter.immediately' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.whenStart=='oneWeek'? 'selected' : ''" value="oneWeek">{{ 'profile.filter.oneWeek' | translate }}</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="data.whenStart=='oneMonth'? 'selected' : ''" value="oneMonth">{{ 'profile.filter.oneMonth' | translate }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="clear" mat-button (click)="clear()">{{ 'profile.filter.clear' | translate }}</button>
+            <button class="apply" mat-button [mat-dialog-close]="data" cdkFocusInitial>{{ 'profile.filter.apply' | translate }}</button>
+        </div>
+    </mat-card-content>
+</mat-card>

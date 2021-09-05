@@ -1,0 +1,385 @@
+<!--
+<div class="main-container" style="max-width: 30vw; margin: auto;" [class.main-is-mobile]="mobileQuery.matches" *ngIf="!isMobile">
+  <div class="d-flex" style="margin-top: auto;">
+    <img class="allow-click img-responsive" src="../assets/img/Imateco@3x.png" (click)="goHome()" />
+  </div>
+  <div class="d-flex" style="margin-bottom: auto;">
+    <h3 class="comming-soon">{{ 'home.comming_soon' | translate }}</h3>
+  </div>
+</div>
+<div class="main-container" [class.main-is-mobile]="mobileQuery.matches" *ngIf="isMobile">
+  <nav
+          [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"
+        class="navbar navbar-expand-md  pl-lg-5 pt-3">
+    <div class="d-flex justify-content-start">
+    <button class="navbar-toggler mr-3" (click)="collapse()" type="button">
+    <span >
+       <img src="../assets/img/collapseIcon.svg"/>
+    </span>
+    </button>
+    <a class="navbar-brand ml-lg-5 mr-lg-5" href="#"
+    >
+      <img class="allow-click" src="../assets/img/Imateco.png" (click)="goHome()" />
+    </a>
+    </div>
+
+    <div class="collapse navbar-collapse   "  id="navbarSupportedContent">
+      <div class="ml-xl-5 pl-xl-5 ml-1 pl-1">
+      <ul class="navbar-nav mr-auto  ml-0 ml-0">
+        <li class="nav-item " (click)="redirectTo('profiles')" *ngIf="!isAuthenticated">
+          <a class="nav-link" routerLink="profiles">{{ 'global.profiles' | translate }}</a>
+        </li>
+
+
+        <li class="nav-item " *ngIf="isAuthenticated">
+          <a  class="nav-link" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="us">{{ 'global.about_us' | translate }}</a>
+        </li>
+        <li class="nav-item ">
+          <a  class="nav-link"  routerLink="partners">{{ 'global.our_partners' | translate }}</a>
+        </li>
+        <li class="nav-item ">
+          <a  class="nav-link"  routerLink="faq">{{ 'global.faq' | translate }}</a>
+        </li>
+
+      </ul>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto " *ngIf="!isAuthenticated">
+        <li class="nav-item pt-1 mr-lg-4 mr-1">
+          <a *ngIf="!isAuthenticated" (click)="snav.close()" class="nav-link"  routerLink="login">{{ 'global.login' | translate }}</a>
+
+        </li>
+        <li class="nav-item mr-lg-4 mr-1">
+
+          <button *ngIf="!isAuthenticated" (click)="snav.close()" routerLink="signup" type="button" class="btn btn-outline-primary pl-4 pr-4 shadow-none">{{ 'global.signup' | translate }}</button>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto" (click)="redirectTo('profile')"*ngIf="isAuthenticated">
+        &lt;!&ndash; <a routerLink="profile"> &ndash;&gt;
+       &lt;!&ndash; <img matListAvatar style="border-radius: 50%; height: 50px; width: 50px; " src="{{getUserPicture()}}"
+             alt="{{ userService.getCurUserFullName()}}">&ndash;&gt;
+        <div style="display: flex; flex-direction: column; justify-content: center">
+        <a  routerLink="profile" class="nav-link" style="color:#37a11a !important">{{ userService.getCurUserFullName() }}</a>
+        </div>
+        <div class="logout-icon"   *ngIf="isAuthenticated">
+          <mat-icon style="cursor: pointer; font-size: 24px"   (click)="logout()" class="logout-icon">logout</mat-icon>
+        </div>
+
+        &lt;!&ndash; </a> &ndash;&gt;
+
+      </ul>
+
+      <ul class="navbar-nav mr-auto language pl-sm-2 ml-0  ml-0">
+      <li style="cursor: pointer"  (click)="switchLanguageClicked()" class="row">
+        <img *ngIf="lang==='en'" src="assets/img/icons8-saudi-arabia-96.png" class="flag-icon">
+        <a  class="nav-link">{{ lang === 'en' ? 'عربي' : 'English' }}</a>
+        <img *ngIf="lang!='en'" src="assets/img/icons8-great-britain-96.png" class="flag-icon">
+
+      </li>
+      </ul>
+    </div>
+  </nav>
+  <div
+          *ngIf="storageService.getLanguage()!='ar'"
+          [ngStyle]="{ left: expanded == true ? '-270px' : '0px' }"
+          class="sidebar pt-3 pl-3 pr-3 "
+          id="sidebar-wrapper"
+  >
+    <div   [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  class="d-flex justify-content-between pb-5 h-100" style="flex-direction: column"  >
+      <div>
+        <div class="d-flex justify-content-between mb-3" >
+          <a class="navbar-brand" href="#"
+          >
+            <img class="allow-click" src="../assets/img/Imateco.png" (click)="goHome()" />
+          </a>
+          <button class="navbar-toggler" (click)="collapse()" type="button">
+    <span >
+        <img src="../assets/img/close.svg"/>
+    </span>
+          </button>
+        </div>
+        <div class="list-group list-group-flush"  [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }">
+            <a  class="sidebar-element mb-2"  [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  *ngIf="isAuthenticated" (click)="collapse()" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+            <a class="sidebar-element mb-2" [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" (click)="collapse()"  *ngIf="!isAuthenticated" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+            <a class="sidebar-element mb-2" [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  (click)="collapse()" routerLink="us">{{ 'global.about_us' | translate }}</a>
+            <a  class="sidebar-element mb-2" [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  (click)="collapse()" routerLink="partners">{{ 'global.our_partners' | translate }}</a>
+            <a  class="sidebar-element mb-2" [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" (click)="collapse()"  routerLink="faq">{{ 'global.faq' | translate }}</a>
+
+          <div [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" *ngIf="!isAuthenticated" class="d-flex justify-content-between">
+            <div class="d-flex justify-content-center" style='flex-direction:column'>
+              <a *ngIf="!isAuthenticated" (click)="collapse()" class="sidebar-element"  routerLink="login"><b>{{ 'global.login' | translate }}</b></a>
+            </div>
+            <button *ngIf="!isAuthenticated" (click)="collapse()" routerLink="signup" type="button" class="btn btn-outline-primary pl-4 pr-4 shadow-none">{{ 'global.signup' | translate }}</button>
+
+          </div>
+          <div class="d-flex justify-content-between" (click)="redirectTo('profile')"*ngIf="isAuthenticated">
+            &lt;!&ndash; <a routerLink="profile"> &ndash;&gt;
+            <div class="row"  [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }">
+          &lt;!&ndash;  <img matListAvatar style="border-radius: 50%; height: 50px; width: 50px; "  src="{{getUserPicture()}}"
+                 alt="{{ userService.getCurUserFullName()}}" />&ndash;&gt;
+              <a routerLink="profile" (click)="collapse()" style="color:#37a11a !important" class="nav-link">{{ userService.getCurUserFullName() }}</a>
+            </div>
+
+            &lt;!&ndash; </a> &ndash;&gt;
+          </div>
+          <div  class="d-flex justify-content-end"   *ngIf="isAuthenticated">
+            <button (click)="logout()" routerLink="signup" type="button" class="btn btn-outline-primary pl-4 pr-4 shadow-none">Logout</button>
+
+          </div>
+
+        </div>
+
+        <ul class="navbar-nav mr-auto   pr-1 pt-2">
+          <li style="cursor: pointer" (click)="switchLanguageClicked()" class="w-100 row  justify-content-end">
+            <img *ngIf="lang==='en'" src="assets/img/icons8-saudi-arabia-96.png" class="flag-icon">
+            <a  class="nav-link">{{ lang === 'en' ? 'عربي' : 'English' }}</a>
+            <img *ngIf="lang!='en'" src="assets/img/icons8-great-britain-96.png" class="flag-icon">
+
+          </li>
+        </ul>
+
+
+      </div>
+      <div>
+        <div class="d-flex justify-content-center" >
+          &lt;!&ndash;     <img src="../../../assets/icons/Facebook.svg" />
+               <img src="../../../assets/icons/Twitter.svg" />
+               <img src="../../../assets/icons/Instagram.svg" />&ndash;&gt;
+        </div>
+        <div class="d-flex justify-content-center">
+          &lt;!&ndash; <img src="../../../assets/icons/©2021MyVPN.svg" />&ndash;&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="expanded===false" (click)="collapse()" class="closeDiv">
+
+  </div>
+  <div    *ngIf="storageService.getLanguage()==='ar' && this.width<768"
+          [ngStyle]="{ left: expanded == true ?  arabicInvisible : this.arabicVisible }"
+          class="sidebar pt-3 pl-3 pr-3 "
+          id="sidebar-wrapper"
+  >
+    <div   [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }"  class="d-flex justify-content-between pb-5 h-100" style="flex-direction: column"  >
+      <div>
+        <div class="d-flex justify-content-between mb-3" >
+          <a class="navbar-brand" href="#"
+          >
+            <img class="allow-click" src="../assets/img/Imateco.png" (click)="goHome()" />
+          </a>
+          <button class="navbar-toggler" (click)="collapse()" type="button">
+    <span >
+        <img src="../assets/img/close.svg"/>
+    </span>
+          </button>
+        </div>
+        <div class="list-group list-group-flush"  [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">
+          <a  class="sidebar-element mb-2"  [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"  style="margin-bottom: -0.2px !important" *ngIf="isAuthenticated" (click)="collapse()" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+          <a class="sidebar-element mb-2" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" (click)="collapse()"  *ngIf="!isAuthenticated" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+          <a class="sidebar-element mb-2" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"  (click)="collapse()" routerLink="us">{{ 'global.about_us' | translate }}</a>
+          <a  class="sidebar-element mb-2" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }"  (click)="collapse()" routerLink="partners">{{ 'global.our_partners' | translate }}</a>
+          <a  class="sidebar-element mb-2" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" (click)="collapse()"  routerLink="faq">{{ 'global.faq' | translate }}</a>
+
+          <div [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }" *ngIf="!isAuthenticated" class="d-flex justify-content-between">
+            <div class="d-flex justify-content-center" style='flex-direction:column'>
+              <a *ngIf="!isAuthenticated" (click)="collapse()" class="sidebar-element"  routerLink="login"><b>{{ 'global.login' | translate }}</b></a>
+            </div>
+            <button *ngIf="!isAuthenticated" (click)="collapse()" routerLink="signup" type="button" class="btn btn-outline-primary pl-4 pr-4 mt-3 shadow-none">{{ 'global.signup' | translate }}</button>
+
+          </div>
+          <div class="d-flex justify-content-between" (click)="redirectTo('profile')"*ngIf="isAuthenticated">
+            &lt;!&ndash; <a routerLink="profile"> &ndash;&gt;
+            <div class="row"  [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' }">
+
+              <a routerLink="profile" (click)="collapse()" style="color:#37a11a !important" class="nav-link">{{ userService.getCurUserFullName() }}</a>
+            </div>
+
+            &lt;!&ndash; </a> &ndash;&gt;
+          </div>
+          <div  class="d-flex justify-content-end"   *ngIf="isAuthenticated">
+            <button (click)="logout()" routerLink="signup" type="button" class="btn btn-outline-primary pl-4 pr-4 shadow-none">{{ 'global.logout' | translate }}</button>
+
+          </div>
+
+        </div>
+
+        <ul class="navbar-nav mr-auto    pr-1 pt-2" style="margin-left:-14px">
+          <li style="cursor: pointer" (click)="switchLanguageClicked()" class="w-100 row  justify-content-end">
+            <img *ngIf="lang==='en'" src="assets/img/icons8-saudi-arabia-96.png" class="flag-icon">
+            <a  class="nav-link">{{ lang === 'en' ? 'عربي' : 'English' }}</a>
+            <img *ngIf="lang!='en'" src="assets/img/icons8-great-britain-96.png" class="flag-icon">
+
+          </li>
+        </ul>
+
+
+      </div>
+      <div>
+        <div class="d-flex justify-content-center" >
+          &lt;!&ndash;     <img src="../../../assets/icons/Facebook.svg" />
+               <img src="../../../assets/icons/Twitter.svg" />
+               <img src="../../../assets/icons/Instagram.svg" />&ndash;&gt;
+        </div>
+        <div class="d-flex justify-content-center">
+          &lt;!&ndash; <img src="../../../assets/icons/©2021MyVPN.svg" />&ndash;&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  &lt;!&ndash;  <mat-toolbar color="primary" class="main-toolbar">
+      <mat-icon [ngClass]="{'flex-1': isAuthenticated, 'pr-20': !isAuthenticated}" class="menu-closed" (click)="snav.toggle()" *ngIf="!snav.opened">
+        menu</mat-icon>
+      <mat-icon [ngClass]="{'flex-1': isAuthenticated, 'pr-20': !isAuthenticated}" class="menu-opened" (click)="snav.toggle()" *ngIf="snav.opened">
+        close</mat-icon>
+      <img class="allow-click" src="../assets/img/Imateco.png" (click)="goHome()" />
+      <span class="flex-1"></span>
+      <a *ngIf="!isAuthenticated" (click)="snav.close()" class="main-app-signup" routerLink="signup">{{ 'global.signup' | translate }}</a>
+      <a *ngIf="!isAuthenticated" (click)="snav.close()" class="main-app-login" routerLink="login">{{ 'global.login' | translate }}</a>
+    </mat-toolbar>&ndash;&gt;
+
+  <mat-sidenav-container (click)="snav.close()" class="main-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="fit-content" #snav [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+      <mat-nav-list>
+
+        <mat-list-item (click)="redirectTo('profiles')" *ngIf="!isAuthenticated">
+          <a routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a>
+        </mat-list-item>
+
+        <mat-list-item (click)="redirectTo('profile')"*ngIf="isAuthenticated">
+          &lt;!&ndash; <a routerLink="profile"> &ndash;&gt;
+         &lt;!&ndash; <img matListAvatar src="{{getUserPicture()}}"
+            alt="{{ userService.getCurUserFullName()}}">&ndash;&gt;
+          <a routerLink="profile" class="font-size-95" style="color:#37a11a !important">{{ userService.getCurUserFullName() }}</a>
+          &lt;!&ndash; </a> &ndash;&gt;
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="redirectTo('profiles')" *ngIf="isAuthenticated">
+          <a routerLink="profiles">{{ 'global.profiles' | translate }}</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="redirectTo('us')">
+          <a routerLink="us">{{ 'global.about_us' | translate }}</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="redirectTo('partners')">
+          <a routerLink="partners">{{ 'global.our_partners' | translate }}</a>
+        </mat-list-item>
+
+        <mat-list-item (click)="redirectTo('faq')">
+          <a routerLink="faq">{{ 'global.faq' | translate }}</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        &lt;!&ndash;<mat-list-item (click)="redirectTo('profiles')">
+          <a routerLink="blog">{{ 'global.blog' | translate }}</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>&ndash;&gt;
+
+        &lt;!&ndash;<mat-list-item (click)="switchLanguageClicked()">
+          <a>{{ lang === 'en' ? 'عربي' : 'English' }}</a>
+        </mat-list-item>&ndash;&gt;
+       &lt;!&ndash;
+        <mat-divider></mat-divider>&ndash;&gt;
+
+        <mat-list-item *ngIf="isAuthenticated">
+          <mat-icon class="logout-icon">logout</mat-icon><a (click)="logout()">{{ 'global.logout' | translate }}</a>
+        </mat-list-item>
+
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<script src="./assets/js/feather.min.js"></script>
+-->
+<!-- Navbar STart -->
+
+<div class="main-container" >
+<header id="topnav" class="defaultscroll sticky" style="background-color: #FFFFFF ">
+  <div  [ngStyle]="{'direction':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'rtl ' : 'ltr' }"   class="container">
+    <!-- Logo container-->
+    <div>
+      <a  (click)="goHome()"  class="logo" [ngStyle]="{'float':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }"  >
+        <img  src="../assets/img/Imateco@3x.png"   (click)="goHome()" class="imageLogo allow-click" height="40" alt="">
+      </a>
+    </div>
+    <!--end login button-->
+    <!-- End Logo container-->
+    <div class="menu-extras" [ngStyle]="{'float':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'left ' : 'right' }">
+      <div class="menu-item">
+        <!-- Mobile menu toggle-->
+        <a class="navbar-toggle" (click)="toggleMenu()"  [ngClass]="{'open': isCondensed === true}">
+          <div class="lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+        <!-- End mobile menu toggle-->
+      </div>
+    </div>
+
+    <div id="navigation" style="overflow: hidden">
+      <!-- Navigation Menu-->
+      <ul class="navigation-menu">
+        <li class="nav-item "  (click)="collapse()"   [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }"  > <a  class="nav-link" routerLink="profiles" (click)="this.toProfiles()">{{ 'global.profiles' | translate }}</a></li>
+        <li class="nav-item "  (click)="collapse()"  [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" > <a class="nav-link"  routerLink="us">{{ 'global.about_us' | translate }}</a>   </li>
+        <li class="nav-item "   (click)="collapse()" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }">  <a  class="nav-link"  routerLink="partners">{{ 'global.our_partners' | translate }}</a>   </li>
+        <li class="nav-item "   (click)="collapse()"  [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" >  <a  class="nav-link"  routerLink="faq">{{ 'global.faq' | translate }}</a>                 </li>
+        <li class="nav-item   "   (click)="collapse()" [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" > <a *ngIf="!isAuthenticated" class="nav-link"  routerLink="login">{{ 'global.login' | translate }}</a> </li>
+        <li class="nav-item   "  (click)="collapse()"   *ngIf="isAuthenticated"   [ngStyle]="{'text-align':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" >           <a  routerLink="profile" class="nav-link" style="color:#37a11a !important">{{ userService.getCurUserFullName() }}</a>
+        </li>
+
+        <div style="display: flex;"  (click)="collapse()"   >
+          <a  [ngStyle]="{'float':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" *ngIf="!isAuthenticated" (click)="collapse()"    class="btn btn-block btn-primary mt-3 mb-3 mr-4 ml-4" routerLink="signup" type="button">{{ 'global.signup' | translate }}</a>
+            <a  [ngStyle]="{'float':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }" *ngIf="isAuthenticated"  (click)="logout()"   class="btn  btn-block btn-primary mt-3 mb-3 mr-4 ml-4" routerLink="signup" type="button">{{ 'global.logout' | translate }}</a>
+
+
+          </div>
+
+
+        <li  class="nav-item    align-items-center ml-0 ml-lg-2" style="cursor: pointer" (click)="switchLanguageClicked()">
+          <a class="nav-item"   [ngStyle]="{'float':(translateService.currentLang === 'ar' || this.storageService.getLanguage()==='ar') ? 'right ' : 'left' }">{{ lang === 'en' ? 'عربي' : 'English' }}</a>
+        </li>
+
+      </ul><!--end navigation menu-->
+
+
+    </div><!--end navigation-->
+  </div><!--end container-->
+</header><!--end header-->
+<!-- Navbar End -->
+<br>
+<br>
+<br>
+<br>
+<div style="background-color: #FAFAFA">
+<router-outlet></router-outlet>
+</div>
+<div *ngIf="isCondensed===true" (click)="collapse()" class="closeDiv">
+</div>
+</div>
+
+<script src="./assets/js/feather.min.js"></script>
+<script src="./assets/js/jquery.easing.min.js"></script>
+
+<script src="./assets/js/jquery-3.5.1.min.js"></script>
+

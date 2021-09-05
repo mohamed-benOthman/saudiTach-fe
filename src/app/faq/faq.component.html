@@ -1,0 +1,14 @@
+<section class="faq">
+    <h3 class="title-faq">{{ 'global.faq' | translate }}</h3>
+    <mat-accordion>
+        <mat-expansion-panel [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' " class="question" *ngFor="let index of [15,1,2,3,4,5,7,8,9,10,12,13,14]">
+            <mat-expansion-panel-header  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">
+                <mat-panel-title [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr' "   [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }" >
+                    <b class="question-title">{{ 'faq.title'+index | translate }}</b>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <span class="question-description" [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left' }">{{ 'faq.text'+index | translate }}</span>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <app-footer></app-footer>
+</section>

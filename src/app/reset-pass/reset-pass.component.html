@@ -1,0 +1,41 @@
+
+<section class="bg-home d-flex align-items-center pt-5">
+    <div [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'"  class="container mt-md-5">
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-lg-5 col-md-6">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{ 'global.reset' | translate }}</h4>
+                        <form class="login-form mt-4"  [formGroup]="resetFormGroup">
+                            <div class="row">
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group position-relative">
+                                        <label>{{ 'forgot.field_email' | translate }} <span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/mail.svg" class="fea icon-sm icons" />
+                                        <input type="email" class="form-control pl-5" placeholder="{{ 'forgot.field_email' | translate }}" formControlName="email" name="email" required="">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-lg-12 mb-0">
+                                    <button  (click)="send()" [disabled]="resetFormGroup.invalid"  class="btn btn-primary btn-block">{{ 'forgot.button_reset' | translate }}</button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div> <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!--
+<section class="forgot d-flex justify-content-c" [hidden]="!sending">
+    <mat-spinner class="green-spinner"></mat-spinner>
+</section>
+-->

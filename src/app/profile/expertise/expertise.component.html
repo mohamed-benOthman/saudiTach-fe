@@ -1,0 +1,100 @@
+
+<mat-card class="p-0 expertise" style="font-family: Montserrat, SemiBold !important; padding-bottom: 40px !important;">
+  <div class="page-card-header d-flex justify-content-between" style="cursor: pointer">
+    <mat-icon  (click)="navigateBack()" [inline]="true">keyboard_arrow_left</mat-icon>
+    <span class="flex-1 title-edit-personal">{{ 'profile.expertise.title' | translate }}</span>
+  </div>
+  <mat-card-content class="mr-lg-r ml-lg-5 pl-lg-5 pr-lg-5 pt-lg-5" style="padding-top: 20px;">
+    <div   [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px; ">
+      <h5 >{{ 'profile.expertise.yearsExperience' | translate }}</h5>
+    </div>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group   style="min-width: 80%;" horizontal [(ngModel)]="curUser.yearsExperience">
+        <mat-button-toggle [ngClass]="curUser.yearsExperience=='0-3'? 'selected' : ''" style="min-width: 33%;" value="1-3">1-3</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.yearsExperience=='3-7'? 'selected' : ''" style="min-width: 33%;" value="3-7">3-7</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.yearsExperience=='7+'? 'selected' : ''" style="min-width: 33%;" value="7+">7+</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div   [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="display:flex; padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.workedStartup' | translate }}</h5>
+    </div>
+    <div  class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" horizontal [(ngModel)]="curUser.startupExperience">
+        <mat-button-toggle [ngClass]="curUser.startupExperience=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.expertise.yes' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.startupExperience=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.expertise.no' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div  [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5 >{{ 'profile.expertise.commitFulltime' | translate }}</h5>
+    </div>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" horizontal [(ngModel)]="curUser.commitFulltime">
+        <mat-button-toggle [ngClass]="curUser.commitFulltime=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.expertise.yes' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.commitFulltime=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.expertise.no' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div  [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"   class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.willingRelocate' | translate }}</h5>
+    </div>
+    <div  class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" horizontal [(ngModel)]="curUser.relocate">
+        <mat-button-toggle [ngClass]="curUser.relocate=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.expertise.yes' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.relocate=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.expertise.no' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div  [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.remote' | translate }}</h5>
+    </div>
+    <div  class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" horizontal [(ngModel)]="curUser.remote">
+        <mat-button-toggle [ngClass]="curUser.remote=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.expertise.yes' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.remote=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.expertise.no' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.equity' | translate }}</h5>
+    </div>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" horizontal [(ngModel)]="curUser.equity">
+        <mat-button-toggle [ngClass]="curUser.equity=='yes'? 'selected' : ''" style="min-width: 50%;" value="yes">{{ 'profile.expertise.yes' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.equity=='no'? 'selected' : ''" style="min-width: 50%;" value="no">{{ 'profile.expertise.no' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.whenStart' | translate }}</h5>
+    </div>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" vertical [(ngModel)]="curUser.whenStart">
+        <mat-button-toggle [ngClass]="curUser.whenStart=='immediately'? 'selected' : ''" value="immediately">{{ 'profile.expertise.immediately' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.whenStart=='in one week'? 'selected' : ''" value="in one week">{{ 'profile.expertise.in one week' | translate }}</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.whenStart=='in one month'? 'selected' : ''" value="in one month">{{ 'profile.expertise.in one month' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <div [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }"  class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+      <h5>{{ 'profile.expertise.whenStart' | translate }}</h5>
+    </div>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <mat-button-toggle-group style="min-width: 80%;" vertical [(ngModel)]="curUser.bestAt">
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Fullstack'? 'selected' : ''" value="Fullstack">Fullstack</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Frontend'? 'selected' : ''" value="Frontend">Frontend</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Backend'? 'selected' : ''" value="Backend">Backend</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Devops'? 'selected' : ''" value="Devops">Devops</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Database'? 'selected' : ''" value="Database">Database</mat-button-toggle>
+        <mat-button-toggle [ngClass]="curUser.bestAt=='Design'? 'selected' : ''" value="Design">Design</mat-button-toggle>
+
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <br/>
+    <div class="d-flex" style="justify-content: center; padding-left: 30%; padding-right: 30%;">
+      <button (click)="update()" class="update-button" mat-raised-button>{{ 'profile.expertise.save' | translate }}</button>
+    </div>
+  </mat-card-content>
+</mat-card>

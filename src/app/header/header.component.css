@@ -1,0 +1,68 @@
+
+@media screen and (max-width: 768px) {
+    .side-collapse {
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        width: 256px;
+        position: fixed;
+        overflow: auto;
+        transition: all 0.3s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    }
+    .side-collapse.open {
+        width: 0;
+    }
+}
+.navbar{
+    background-color: #ffffff !important;
+}
+.sidebar {
+    background-color:#ffffff;
+    top: 0px;
+    bottom: 0;
+    left: -400px;
+    width: 400px;
+    position: fixed;
+    overflow: auto;
+    transition: 0.9s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    box-shadow: 10px 0px 50px -9px rgba(0, 0, 0, 0.12);
+
+}
+
+.btn-outline-primary{
+    border-radius:50px !important;
+    width : 150px !important;
+    height:45px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    color:#37A11A !important;
+&:hover{
+     color:$white !important;
+ }
+}
+.nav-link{
+
+    color: #4F5665 !important;
+    font-size: 16px !important;
+&:hover{
+     color:#37A11A !important
+ }
+}
+.brands{
+    display: flex;
+    flex-direction: row;
+}
+.collapse-icon-button{
+    border-width:0px !important;
+    background-color: transparent;
+}
+.sidebar-element{
+    font-size: 24px !important;
+    line-height: 28px;
+    color: #4F5665;
+    text-decoration:none;
+    cursor:pointer ;
+    text-decoration: none !important;
+
+
+}

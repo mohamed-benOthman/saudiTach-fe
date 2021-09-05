@@ -1,0 +1,128 @@
+.material-icons {
+  font-size: 36px;
+  color: #37A11A;
+}
+
+.title-edit-personal {
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  font-weight: 500;
+  font-family: Montserrat, SemiBold !important;
+  padding-right: 30px;
+}
+
+.change-password-sub {
+  font-size: 12pt;
+  font-weight: 500;
+  padding-left: 15px;
+  font-family: Montserrat, SemiBold !important;
+}
+
+.edit-profile-icon {
+  color: #37A11A;
+  font-size: 24px;
+  padding-right: 20px;
+}
+
+.edit-profile-password {
+  padding-left: 20px;
+}
+
+.edit-profile-label {
+  font-family: Montserrat, SemiBold !important;
+}
+
+.edit-profile-field-total {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #37A11A !important;
+}
+
+.or-box {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.or-signup {
+  text-align: center;
+  font-family: Montserrat, SemiBold !important;
+  font-weight: 400;
+}
+
+
+.update-button {
+  background-color: #37A11A;
+  color: white;
+  font-size: 13pt;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-family: Montserrat, SemiBold !important;
+}
+
+.deactivate-button {
+  background-color: red;
+  color: white;
+  font-size: 13pt;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-family: Montserrat, SemiBold !important;
+}
+
+
+::ng-deep .mat-select {
+  font-family: Montserrat, SemiBold !important;
+}
+
+::ng-deep .mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, 
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #37A11A;
+}
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #37A11A; /*replace with your color*/
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba(55, 161, 26,0.7);  /*replace with your color*/
+}
+::ng-deep .mat-slide-toggle.mat-unchecked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #37A11A; /*replace with your color*/
+}
+
+::ng-deep .mat-slide-toggle.mat-unchecked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba(55, 161, 26,0.7);  /*replace with your color*/
+}
+
+
+
+
+.passwordClass{
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  font-weight: 500;
+  font-family: Montserrat, SemiBold !important;
+  padding-right: 30px;
+  color:#37A11A !important;
+
+}
+.activationClass{
+  color: black;
+  font-size: 16pt;
+
+  font-weight: 500;
+  font-family: Montserrat, SemiBold !important;
+
+}
+.passwordClass:hover{
+color:#37A11A !important;
+}

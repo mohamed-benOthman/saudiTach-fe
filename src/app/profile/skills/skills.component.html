@@ -1,0 +1,166 @@
+<mat-card class="p-0" style="font-family: Montserrat, SemiBold !important; padding-bottom: 40px !important;">
+  <div class="page-card-header d-flex justify-content-between">
+    <mat-icon (click)="navigateBack()" [inline]="true">keyboard_arrow_left</mat-icon>
+    <span class="flex-1 title-edit-personal">{{ 'profile.editSkills.title' | translate }}</span>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px; padding-top: 15px;">
+    <b>{{ 'profile.editSkills.frontend' | translate }}</b>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <mat-card-content style="padding-top: 20px;" class="edit-profile-field-total profile-prop-card-content">
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-chip-list class="profile-prop-chip-list" #chipListFrontend aria-label="Frontend selection">
+          <mat-chip class="green-chip"
+            color="primary" selected
+            *ngFor="let fe of curUser.frontend"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeFrontend(fe)"
+            >
+            {{fe}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #frontendInput
+            [formControl]="frontendCtrl"
+            [matAutocomplete]="autoFrontend"
+            [matChipInputFor]="chipListFrontend">
+        </mat-chip-list>
+        <mat-autocomplete #autoFrontend="matAutocomplete" (optionSelected)="selectedFrontend($event)">
+          <mat-option *ngFor="let fe of filteredFrontend | async" [value]="fe.name">
+            {{fe.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <b>{{ 'profile.editSkills.backend' | translate }}</b>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <mat-card-content style="padding-top: 20px;" class="edit-profile-field-total profile-prop-card-content">
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-chip-list class="profile-prop-chip-list" #chipListBackend aria-label="Backend selection">
+          <mat-chip class="green-chip"
+            color="primary" selected
+            *ngFor="let fe of curUser.backend"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeBackend(fe)"
+            >
+            {{fe}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #backendInput
+            [formControl]="backendCtrl"
+            [matAutocomplete]="autoBackend"
+            [matChipInputFor]="chipListBackend">
+        </mat-chip-list>
+        <mat-autocomplete #autoBackend="matAutocomplete" (optionSelected)="selectedBackend($event)">
+          <mat-option *ngFor="let fe of filteredBackend | async" [value]="fe.name">
+            {{fe.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <b>{{ 'profile.editSkills.design' | translate }}</b>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <mat-card-content style="padding-top: 20px;" class="edit-profile-field-total profile-prop-card-content">
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-chip-list class="profile-prop-chip-list" #chipListDesign aria-label="Design selection">
+          <mat-chip class="green-chip"
+            color="primary" selected
+            *ngFor="let fe of curUser.design"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeDesign(fe)"
+            >
+            {{fe}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #designInput
+            [formControl]="designCtrl"
+            [matAutocomplete]="autoDesign"
+            [matChipInputFor]="chipListDesign">
+        </mat-chip-list>
+        <mat-autocomplete #autoDesign="matAutocomplete" (optionSelected)="selectedDesign($event)">
+          <mat-option *ngFor="let fe of filteredDesign | async" [value]="fe.name">
+            {{fe.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <b>{{ 'profile.editSkills.devops' | translate }}</b>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <mat-card-content class="edit-profile-field-total profile-prop-card-content">
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-chip-list class="profile-prop-chip-list" #chipListDevops aria-label="Devops selection">
+          <mat-chip class="green-chip"
+            color="primary" selected
+            *ngFor="let fe of curUser.devops"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeDevops(fe)"
+            >
+            {{fe}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #devopsInput
+            [formControl]="devopsCtrl"
+            [matAutocomplete]="autoDevops"
+            [matChipInputFor]="chipListDevops">
+        </mat-chip-list>
+        <mat-autocomplete #autoDevops="matAutocomplete" (optionSelected)="selectedDevops($event)">
+          <mat-option *ngFor="let fe of filteredDevops | async" [value]="fe.name">
+            {{fe.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <b>{{ 'profile.editSkills.database' | translate }}</b>
+  </div>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <mat-card-content style="padding-top: 20px;" class="edit-profile-field-total profile-prop-card-content">
+      <mat-form-field class="edit-profile-field-total" appearance="outline">
+        <mat-chip-list class="profile-prop-chip-list" #chipListDatabase aria-label="Database selection">
+          <mat-chip class="green-chip"
+            color="primary" selected
+            *ngFor="let fe of curUser.database"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeDatabase(fe)"
+            >
+            {{fe}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #databaseInput
+            [formControl]="databaseCtrl"
+            [matAutocomplete]="autoDatabase"
+            [matChipInputFor]="chipListDatabase">
+        </mat-chip-list>
+        <mat-autocomplete #autoDatabase="matAutocomplete" (optionSelected)="selectedDatabase($event)">
+          <mat-option *ngFor="let fe of filteredDatabase | async" [value]="fe.name">
+            {{fe.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <br/>
+  <br/>
+  <div class="d-flex" style="padding-left: 15px; padding-right: 15px;">
+    <button (click)="update()" class="update-button" mat-raised-button>{{ 'profile.editSkills.save' | translate }}</button>
+  </div>
+</mat-card>

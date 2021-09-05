@@ -1,0 +1,181 @@
+<mat-card>
+  <div  class="d-flex mt-5 mb-15 custom-card-header justify-content-between"  [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row'}">
+    <div   class="d-flex "  [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row'}" >
+      <img mat-card-avatar class="card-avatar" src="{{getUserPicture()}}">
+      <!--<div mat-card-avatar class="card-avatar">
+        <button mat-mini-fab (click)="editPhotoClicked()" style="float:right;">
+          &lt;!&ndash;<mat-icon>camera_alt</mat-icon>&ndash;&gt;
+        </button>
+      </div>-->
+      <div  class="mr-3">
+        <mat-card-title>{{ userService.curUser.firstName+" "+userService.curUser.lastName }}</mat-card-title>
+        <mat-card-subtitle class="second-title">
+         <img src="../../assets/img/map-pin%20(1).svg" />
+          {{ userService.curUser.country }}{{',  '}}{{userService.curUser.city}}
+          </mat-card-subtitle>
+      </div>
+    </div>
+    <ul class="list-unstyled social-icon mb-0 mt-3">
+
+    <li class="list-inline-item"><a  (click)="editUserClicked()" class="rounded" style="background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+    </ul>
+  </div>
+  <mat-card-content>
+    <div class="d-flex">
+      <mat-divider></mat-divider>
+    </div>
+  <div  class="d-flex justify-content-between" style="column-count: 2; padding-top: 10px;"  [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row'}">
+      <div style="width: 90%;" class="profile-description" *ngIf="userService.curUser.tellMore"  [ngStyle]="{'text-align':(this.storageService.getLanguage()==='ar') ? 'right' : 'left'}" >
+        {{ userService.curUser.tellMore }}
+      </div>
+      <div style="width: 90%; "class="profile-description" *ngIf="!userService.curUser.tellMore">
+        {{ 'profile.more_about' | translate }}
+      </div>
+      <div style="width: 10%;">
+
+        <ul class="list-unstyled social-icon"  [ngStyle]="{'float':(this.storageService.getLanguage()==='ar') ? 'left' : 'right'}">
+
+          <li class="list-inline-item"><a  (click)="editAboutMeClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: flex"  [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row'}" class="d-flex justify-content-between" style="column-count: 2; padding-top: 10px;">
+      <div class="social-links">
+        <b>{{ 'profile.social_links' | translate }}</b>
+      </div>
+
+      <ul class="list-unstyled social-icon" style="float: right">
+
+        <li class="list-inline-item"><a  (click)="editSocialLinksClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+      </ul>
+    </div>
+    <div   class="d-flex" style="padding-bottom: 20px;">
+      <div class="col-6">
+        <div style="word-break: break-all;" [hidden]="!userService.curUser.linkedInProfile"><img src="../../assets/img/linkedin-profile.svg"/><a style="text-decoration: none; color: #37a11a;" href="https://linkedin.com/in/{{ userService.curUser.linkedInProfile }}" target="_blank"> /{{ userService.curUser.linkedInProfile }}</a></div>
+      </div>
+      <div class="col-6">
+        <div style="word-break: break-all;" [hidden]="!userService.curUser.twitter"><img src="../../assets/img/001-twitter-profile.svg"/><a style="text-decoration: none; color: #37a11a;" href="https://twitter.com/{{ userService.curUser.twitter }}" target="_blank"> /{{ userService.curUser.twitter }}</a></div>
+      </div>
+    </div>
+    <div class="d-flex" style="display: flex"  >
+      <mat-divider></mat-divider>
+    </div>
+    <div [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'row-reverse' : 'row'}"  class="d-flex" style="column-count: 2; padding-top: 10px;">
+      <div  style="width: 90%;display: flex; flex-direction:column !important;" [ngStyle]="{ 'align-items': (storageService.getLanguage()==='ar') ? 'flex-end':''}">
+        <p><span class="green-heading">{{ 'profile.yearsExperience' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.yearsExperience? userService.curUser.yearsExperience : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.workedStartup' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.startupExperience? ('profile.expertise.'+userService.curUser.startupExperience | translate) : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.commitFulltime' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.commitFulltime? ('profile.expertise.'+userService.curUser.commitFulltime | translate) : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.willingRelocate' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.relocate? ('profile.expertise.'+userService.curUser.relocate | translate) : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.remote' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.remote? ('profile.expertise.'+userService.curUser.remote | translate) : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.equity' | translate }}&nbsp;</span><span class="profile-prop">{{ userService.curUser.equity? ('profile.expertise.'+userService.curUser.equity | translate) : '-' }}</span></p>
+        <p><span class="green-heading">{{ 'profile.whenStart' | translate }}&nbsp;</span> <span class="profile-prop">{{ userService.curUser.whenStart? ('profile.expertise.'+userService.curUser.whenStart | translate) : '-' }}</span></p>
+        <p [dir]="(storageService.getLanguage()==='ar' ? 'rtl' : 'ltr')"><span class="green-heading">{{ 'profile.bestAt' | translate }}&nbsp;</span> <span class="profile-prop">{{ userService.curUser.bestAt? userService.curUser.bestAt  : '-' }}</span></p>
+      </div>
+      <div style="width: 10%;display: flex; flex-direction:column !important;" [ngStyle]="{ 'align-items': (storageService.getLanguage()==='ar') ? 'flex-start':'flex-end'}">
+
+
+        <ul class="list-unstyled social-icon" style="float: right">
+
+          <li class="list-inline-item"><a  (click)="editExpertiseClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="!userService.curUser.frontend && !userService.curUser.backend && !userService.curUser.devops  && !userService.curUser.database" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.skills' | translate }}</b></span>
+    </div>
+    <button mat-mini-fab (click)="editSkillsClicked()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-header>
+</mat-card>
+
+<mat-card *ngIf="userService.curUser.frontend" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.frontend' | translate }}</b></span>
+    </div>
+    <ul class="list-unstyled social-icon" style="float: right">
+
+
+      <li class="list-inline-item"><a  (click)="editSkillsClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+
+      </ul>
+  </mat-card-header>
+  <mat-card-content class="profile-prop-card-content">
+    <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+      <mat-chip *ngFor="let fe of userService.curUser.frontend" color="primary" selected>{{ fe }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="userService.curUser.backend" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.backend' | translate }}</b></span>
+    </div>
+    <ul class="list-unstyled social-icon" style="float: right">
+
+      <li class="list-inline-item"><a  (click)="editSkillsClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+    </ul>
+  </mat-card-header>
+  <mat-card-content class="profile-prop-card-content">
+    <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+      <mat-chip *ngFor="let fe of userService.curUser.backend" color="primary" selected>{{ fe }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="userService.curUser.design" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.design' | translate }}</b></span>
+    </div>
+
+    <ul class="list-unstyled social-icon" style="float: right">
+
+      <li class="list-inline-item"><a  (click)="editSkillsClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+    </ul>
+  </mat-card-header>
+  <mat-card-content class="profile-prop-card-content">
+    <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+      <mat-chip *ngFor="let fe of userService.curUser.design" color="primary" selected>{{ fe }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="userService.curUser.devops" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.devops' | translate }}</b></span>
+    </div>
+    <ul class="list-unstyled social-icon" style="float: right">
+
+      <li class="list-inline-item"><a  (click)="editSkillsClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+    </ul>
+  </mat-card-header>
+  <mat-card-content class="profile-prop-card-content">
+    <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+      <mat-chip *ngFor="let fe of userService.curUser.devops" color="primary" selected>{{ fe }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="userService.curUser.database" class="profile-prop-card mtb-15 p-0">
+  <mat-card-header class="profile-prop-card-header">
+    <div class="profile-prop-card-header-content">
+      <span><b>{{ 'profile.database' | translate }}</b></span>
+    </div>
+    <ul class="list-unstyled social-icon" style="float: right">
+
+      <li class="list-inline-item"><a  (click)="editSkillsClicked()" class="rounded" style="float: right;background-color: #37a11a; cursor: pointer; border-color:white; color:white"><img src="../../assets/img/settings%20(1).svg" class="fea icon-sm fea-social" /></a></li>
+    </ul>
+  </mat-card-header>
+  <mat-card-content class="profile-prop-card-content">
+    <mat-chip-list class="profile-prop-chip-list" aria-label="Fish selection">
+      <mat-chip *ngFor="let fe of userService.curUser.database" color="primary" selected>{{ fe }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+

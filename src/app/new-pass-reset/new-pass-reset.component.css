@@ -1,0 +1,210 @@
+.reset {
+    padding: 15px;
+}
+
+.title-reset {
+    color: black;
+    font-size: 24pt;
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.email-reset {
+    margin-top: -20px;
+    padding-bottom: 30px;
+    color: black;
+    font-size: 10pt;
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-icon {
+    color: #37A11A;
+    padding-right: 20px;
+}
+
+.reset-password {
+    padding-left: 20px;
+}
+
+.reset-label {
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-field-total {
+    width: 100%;
+}
+  
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #37A11A !important;
+}
+
+.or-box {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.or-reset {
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+    font-weight: 400;
+}
+
+.reset-google-div {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    margin-left: -15px;
+    margin-top: 1px;
+    position: relative;
+    display: initial;
+    float: left;
+    text-align:center
+}
+
+.reset-google-div img {
+    position: absolute;
+    top: 25%;
+    right: 25%;
+}
+
+.reset-google {
+    background-color: #4285F4;;
+    color: white;
+    width: 100%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.reset-google-text-div {
+    height: 48px;
+    position: relative;
+    margin-top: -10px;
+}
+
+.reset-google-text-div h3 {
+    font-weight: 400;
+    font-size: 13pt;
+    font-family: Montserrat, SemiBold !important; 
+}
+
+.reset-twitter-div {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    margin-left: -15px;
+    margin-top: 1px;
+    position: relative;
+    display: initial;
+    float: left;
+    text-align:center
+}
+
+.reset-twitter-div img {
+    position: absolute;
+    top: 25%;
+    right: 25%;
+}
+
+.reset-twitter {
+    background-color: #1DA1F2;
+    color: white;
+    width: 100%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.reset-twitter-text-div {
+    height: 48px;
+    position: relative;
+    margin-top: -10px;
+}
+
+.reset-twitter-text-div h3 {
+    font-weight: 400;
+    font-size: 13pt;
+    font-family: Montserrat, SemiBold !important; 
+}
+
+.reset-button {
+    background-color: #37A11A;
+    color: white;
+    font-size: 13pt;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+::ng-deep .mat-select {
+    font-family: Montserrat, SemiBold !important;
+}
+
+::ng-deep .mat-checkbox-layout {
+    white-space: normal !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, 
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #37A11A;
+}
+
+.reset-img-success {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+}
+
+.resend-button {
+    background-color: #37A11A;
+    color: white;
+    font-size: 13pt;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-success-verify {
+    font-weight: 400;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-success-sent {
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-success-email {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.reset-success-check {
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.green-spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #37A11A !important;
+}

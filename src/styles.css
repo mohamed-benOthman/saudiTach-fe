@@ -1,0 +1,270 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './assets/css/fontawesome.min.css';
+@import './assets/css/fonts.googleapis.com.css';
+
+body {
+  margin: 0;
+  background-color: #F6F6F6 !important;
+}
+nav{
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+.basic-container {
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.pr-20 {
+  padding-right: 20px;
+}
+
+.allow-click {
+  cursor: pointer;
+}
+
+.error-snack {
+  background: red;
+}
+
+.success-snack {
+  background: #37A11A;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused,
+.mat-form-field-outline-thick {
+  color: #37A11A !important;
+}
+
+.font-size-95 {
+  font-size: 0.95rem;
+}
+
+.center-content {
+  padding: 0 16px;
+    text-align: center;
+}
+
+/* Mat Buttons */
+
+.material-icons {
+  font-size: 15px;
+}
+
+.mat-mini-fab.mat-accent {
+  background-color: #ffffff;
+}
+
+.mat-mini-fab.mat-accent {
+  color: rgb(56, 161, 26);
+  width: 24px;
+  height: 24px;
+}
+
+.mat-mini-fab .mat-button-wrapper {
+  padding: 0 !important;
+}
+
+/* Mat Card */
+
+.mat-card {
+  color: #262626;
+}
+
+.page-card-header {
+  background-color: #F9F9F9;
+  padding: 27px 0;
+  font-size: 18pt;
+  font-weight: 600;
+}
+
+/* Chips */
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: #37A11A !important;
+  border-radius: 5px !important;
+}
+
+/* Spacing */
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.plr-20 {
+  padding: 0 20px;
+}
+
+.pt-15 {
+  padding-top: 15px;
+}
+
+.ptb-15 {
+  padding: 15px 0;
+}
+.lds-grid {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-grid div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #37A11A;
+  animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.ptb-20 {
+  padding: 20px 0;
+}
+
+.mtb-15 {
+  margin: 15px 0;
+}
+
+.mt-5 {
+  margin-top: 5px !important;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+/* Flex */
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+  position: relative;
+  width: 25%;
+  -webkit-box-flex: 0;
+}
+
+.col-4 {
+  flex: 0 0 33%;
+  max-width: 33%;
+  position: relative;
+  width: 33%;
+  -webkit-box-flex: 0;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  position: relative;
+  width: 50%;
+  -webkit-box-flex: 0;
+}
+
+.col-8 {
+  flex: 0 0 67%;
+  max-width: 67%;
+  position: relative;
+  width: 67%;
+  -webkit-box-flex: 0;
+}
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+  position: relative;
+  width: 75%;
+  -webkit-box-flex: 0;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}

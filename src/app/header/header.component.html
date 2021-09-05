@@ -1,0 +1,95 @@
+<nav *ngIf="expanded==true" class="navbar navbar-expand-lg  pl-md-5 pt-3">
+    <a class="navbar-brand ml-md-5 mr-md-5" href="#"
+    >
+        <!--<img src="../../../assets/icons/Logo.svg"/>-->
+    </a>
+    <button class="navbar-toggler" (click)="collapse()" type="button">
+    <span >
+       <!-- <img src="../../../assets/icons/collapseIcon.svg"/>-->
+    </span>
+    </button>
+
+    <div class="collapse navbar-collapse ml-5 pl-5" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ml-5 pl-5">
+            <li class="nav-item mr-4">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link" href="#">Testimonials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Help</a>
+            </li>
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse ml-5 pl-5" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ml-5 pl-5">
+            <li class="nav-item mr-4">
+                <a class="nav-link"  href="#"><b>Sign In</b></a>
+            </li>
+            <li class="nav-item mr-4">
+                <button type="button" class="btn btn-outline-primary pl-4 pr-4">Sign Up</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div
+        [ngStyle]="{ left: expanded == true ? '-400px' : '0px' }"
+        class="sidebar pt-3 pl-3 pr-3 "
+        id="sidebar-wrapper"
+>
+    <div class="d-flex justify-content-between pb-5 h-100" style="flex-direction: column"  >
+        <div>
+            <div class="d-flex justify-content-between mb-3" >
+                <a class="navbar-brand" href="#"
+                >
+                    <!--<img src="../../../assets/icons/Logo.svg" />-->
+                </a>
+                <button class="navbar-toggler" (click)="collapse()" type="button">
+    <span >
+    <!--    <img src="../../../assets/icons/close.svg"/>-->
+    </span>
+                </button>
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="sidebar-element mb-2"
+                >About</a
+                >
+                <a class="sidebar-element mb-2"
+                >Features</a
+                >
+                <a class="sidebar-element mb-2"
+                >Pricing</a
+                >
+                <a class="sidebar-element mb-2"
+                >Testimonials</a
+                >
+                <a class="sidebar-element mb-2"
+                >Help</a
+                >
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-center" style='flex-direction:column'>
+                        <a class="sidebar-element"   href="#"><b>Sign In</b></a></div>
+                    <button type="button" class="btn btn-outline-primary pl-4 pr-4 sidebar-element ">Sign Up</button>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <div class="d-flex justify-content-center" >
+           <!--     <img src="../../../assets/icons/Facebook.svg" />
+                <img src="../../../assets/icons/Twitter.svg" />
+                <img src="../../../assets/icons/Instagram.svg" />-->
+            </div>
+            <div class="d-flex justify-content-center">
+               <!-- <img src="../../../assets/icons/©2021MyVPN.svg" />-->
+            </div>
+        </div>
+    </div>
+</div>

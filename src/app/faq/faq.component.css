@@ -1,0 +1,26 @@
+.title-faq {
+    color: black;
+    font-size: 24pt;
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-family: Montserrat, SemiBold !important;
+}
+
+.question {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.faq {
+    padding: 10px;;
+}
+
+.question-title{
+    font-family: Montserrat, SemiBold !important;
+    font-weight: 600;
+}
+
+.question-description {
+    font-family: Montserrat, SemiBold !important;
+}

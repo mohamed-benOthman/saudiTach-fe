@@ -1,0 +1,9 @@
+<section class="partners">
+    <h3 class="title-partners">{{ 'global.our_partners' | translate }}</h3>
+    <a *ngFor="let partner of partnersList" target="_blank" href="{{partner.site}}">
+        <br>
+        <br>
+        <img style="max-width: 200px;" class="partner-list" alt="{{partner.alt}}" src="{{partner.logo}}">
+    </a>
+    <app-footer></app-footer>
+</section>

@@ -1,0 +1,600 @@
+
+<section class="bg-home d-flex align-items-center " style="padding-top: 0px !important">
+    <div [dir]="(this.storageService.getLanguage()==='ar') ? 'rtl' : 'ltr'"  class="container mt-sm-5 mt-2">
+        <div class="row justify-content-center">
+
+            <div [hidden]="!isFirstStep" class="col-lg-10 col-12 mb-5">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{ 'signup.title' | translate }}</h4>
+                        <form class="login-form mt-4"   [formGroup]="signupFormEmailGroup">
+                            <div class="row">
+                                <div class="col-lg-6" *ngIf="this.innerWidth>=700 || this.signupEmail===true">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_firstName' | translate }} <span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/user.svg" class="fea icon-sm icons" />
+                                        <input  class="form-control pl-5" placeholder="{{ 'signup.field_firstName' | translate }}" formControlName="firstName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" *ngIf="this.innerWidth>=700 || this.signupEmail===true">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_lastName' | translate }}<span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/user.svg" class="fea icon-sm icons" />
+                                        <input  class="form-control pl-5" placeholder="{{ 'signup.field_lastName' | translate }}" formControlName="lastName" required="">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6" *ngIf="this.innerWidth>=700 || this.signupEmail===true">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{'signup.email' | translate}} <span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/mail.svg" class="fea icon-sm icons" />
+                                        <input type="email" class="form-control pl-5" formControlName="email" [placeholder]="'signup.email' | translate" name="email" required="">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6" *ngIf="this.innerWidth>=700 || this.signupEmail===true">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.image' | translate }} </label>
+
+                                        <!--<input  class="form-control pl-5" type="file " name="file" placeholder="{{ 'signup.image' | translate }}" formControlName="profileImage" required="">-->
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <input class="form-control "   type="file" name="file" (change)="uploadFile($event)">
+                                            </div>
+                                            <div class="col-2 mt-2" style="flex-direction: column" style="padding:0px !important">
+                                                <span  class="w-100 pl-4">{{this.uploadPourcentage}}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-1">
+
+                               <mat-checkbox *ngIf="this.innerWidth>=700 || this.signupEmail===true" formControlName="iUnderstand" [ngStyle]="{'text-align':(storageService.getLanguage()==='ar') ? 'right' : 'left'}" [(ngModel)]="iUnderstand">{{ 'signup.understand' | translate }} <a style="text-decoration: none; color: #37A11A;" href="/terms" target="_blank"><strong>{{ 'signup.userAgreement' | translate }}</strong></a> {{ 'signup.and' | translate }} <a style="text-decoration: none; color: #37A11A;" href="/privacy" target="_blank"><strong>{{ 'signup.privacyPolicy' | translate }}</strong></a></mat-checkbox>
+                                    </div>
+                                <div *ngIf="this.innerWidth>=700 || this.signupEmail===true"  class="col-12 col-lg-6">
+                                    <button  (click)="next()" [disabled]="signupFormEmailGroup.invalid || !iUnderstand || (this.uploadPourcentage>0 && this.uploadPourcentage<100) "  class="btn btn-primary btn-block">{{'signup.button_signup' | translate }} </button>
+                                </div>
+                                <div class="col-lg-12 mt-4 text-center">
+
+                                    <h6 *ngIf="this.innerWidth>=700 ">{{ 'signup.signup_with' | translate }} </h6>
+<!--
+                                    <ul class="list-unstyled social-icon mb-0 mt-3">
+                                        <li class="list-inline-item"><a (click)="socialLoginTwitter()" class="rounded mr-2"><img src="../../assets/img/twitter.svg" class="fea icon-sm fea-social" /></a></li>
+                                        <li class="list-inline-item"><a (click)="socialLoginLinkedin()" class="rounded"><img src="../../assets/img/linkedin.svg" class="fea icon-sm fea-social" /></a></li>
+
+                                        &lt;!&ndash;
+                                                                                <li class="list-inline-item"><a  (click)="socialLoginGoogle()" class="rounded"><img src="../../assets/img/google-brands.svg" class="fea icon-sm fea-social" /></a></li>
+                                        &ndash;&gt;
+                                    </ul>&lt;!&ndash;end icon&ndash;&gt;-->
+                                    <div class="row  justify-content-between"  *ngIf="(this.innerWidth<700 &&  this.signupEmail===false) || this.innerWidth>=700">
+                                        <div class="col-lg-6 col-12 pr-lg-2" >
+                                            <a  class="social-button "  (click)="socialLoginTwitter()" id="twitter-connect"> <span >Twitter</span></a>
+
+                                        </div>
+                                        <div class="col-lg-6 col-12 pl-lg-2" >
+                                            <a  class="social-button  " (click)="socialLoginLinkedin()"  id="linkedin-connect"> <span>LinkedIn</span></a>
+
+                                        </div>
+
+                                    </div>
+                                    <h6  class="mt-3" *ngIf="this.innerWidth<700 &&  this.signupEmail===false">{{ 'signup.or' | translate }} </h6>
+
+
+                                        <div *ngIf="this.innerWidth<700 &&  this.signupEmail===false" class="col-12 col-lg-6">
+                                            <button (click)="this.signupEmail=true"   class="btn btn-primary btn-block">{{ 'signup.button_signup' | translate }}</button>
+                                        </div>
+                                    <div *ngIf="this.innerWidth<700 && this.signupEmail===false" class="mt-4">
+
+                                    <mat-checkbox  formControlName="iUnderstand"   [(ngModel)]="iUnderstand">{{ 'signup.understand' | translate }} <a style="text-decoration: none; color: #37A11A;" href="/terms" target="_blank"><strong>{{ 'signup.userAgreement' | translate }}</strong></a> {{ 'signup.and' | translate }} <a style="text-decoration: none; color: #37A11A;" href="/privacy" target="_blank"><strong>{{ 'signup.privacyPolicy' | translate }}</strong></a></mat-checkbox>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div> <!--end col-->
+            <div [hidden]="!isSecondStep " class="col-lg-5 col-md-6 mb-5">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ 'signup.title2' | translate }}</h5>
+                        <h6 class="card-title text-center"><b>{{ signupFormEmailGroup.value.email }}</b></h6>
+                        <form class="login-form mt-4"   [formGroup]="signupFormGeralGroup">
+                            <div class="row" >
+
+                                <div class="col-lg-12" *ngIf="oathSignup==false" >
+                                    <div class="form-group position-relative toolPassword">
+
+
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_password' | translate }} <span class="text-danger">*</span></label>
+                                        <img src="./../../assets/img/key.svg"  class="fea icon-sm icons" />
+                                        <input type="password" class="form-control pl-5" formControlName="password"  placeholder="{{ 'signup.field_password' | translate }}" formControlName="password" required="">
+                                        <span class="tooltiptext" [ngStyle]="{'background-color':( signupFormGeralGroup.value.password == null || signupFormGeralGroup.value.password.length<6)   ? '#d3d3d3' : '#37a11a' }">{{ 'signup.password-control' | translate }}</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12" *ngIf="oathSignup==false">
+                                    <div class="form-group position-relative toolPassword">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_confirm_password' | translate }} <span class="text-danger">*</span></label>
+                                        <img src="./../../assets/img/key.svg"  class="fea icon-sm icons" />
+                                        <input type="password" class="form-control pl-5" formControlName="password"  placeholder="{{ 'signup.field_confirm_password' | translate }}" formControlName="confirmPassword" required="">
+                                        <span class="tooltiptext" [ngStyle]="{'background-color':( signupFormGeralGroup.value.confirmPassword == null || signupFormGeralGroup.value.confirmPassword.length<6) || (signupFormGeralGroup.value.confirmPassword != signupFormGeralGroup.value.password )  ? '#d3d3d3' : '#37a11a' }">{{ 'signup.password-control-confirm' | translate }}</span>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_country' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"   #mySelect
+                                                 (change)='loadCities(mySelect.value)'   formControlName="country">
+                                            <option [value]="" [disabled]="true"  [selected]="true">---</option>
+
+                                            <option  *ngFor="let country of countries" [value]="country.country">{{country.country}}
+
+                                            </option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'signup.field_city' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select" id="job-catagories"  formControlName="city">
+                                            <option   *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12" dir="ltr">
+                           <!--         <div class="form-group position-relative">
+                                        <label>LinkedIn<span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+
+                                        <img src="../../assets/img/linkedin.svg" class="fea icon-sm icons" />
+                                        <input  class="form-control pl-5"  autocomplete="off"  matInput placeholder="LinkedIn" formControlName="linkedInProfile">
+                                        <small>{{ 'signup.linkedin_handle' | translate }}</small>
+                                    </div>-->
+                                    <label><b>LinkedIn</b><span class="text-danger">*</span></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text prepend-text" id="basic-addon3"><img src="../../assets/img/linkedin.svg" class="fea icon-sm icons mr-1" /> https://www.linkedin.com/in/</span>
+                                        </div>
+                                        <input formControlName="linkedInProfile"  type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12" dir="ltr" *ngIf="this.twitterLog===false" >
+                                   <!-- <div class="form-group position-relative">
+                                        <label>Twitter<span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/twitter.svg" class="fea icon-sm icons" />
+                                        <input  class="form-control pl-5"   autocomplete="off"  matInput placeholder="Twitter Handle" formControlName="twitter">
+
+                                        <small>{{ 'signup.twitter_handle' | translate }}</small>
+
+                                    </div>-->
+                                    <label><b>Twitter</b><span class="text-danger">*</span></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text prepend-text"  id="basic-addon3"><img src="../../assets/img/twitter.svg" class="fea icon-sm icons mr-1" /> https://twitter.com/</span>
+                                        </div>
+                                        <input formControlName="twitter" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="row justify-content-between ">
+
+                                        <div *ngIf="oathSignup==false" class="col-lg-12 ">
+                                            <button  (click)="next2()"  [disabled]="signupFormGeralGroup.value.password != signupFormGeralGroup.value.confirmPassword  ||  signupFormGeralGroup.invalid || signupFormGeralGroup.value.password.length<6 || signupFormGeralGroup.value.city === '---'" class="btn btn-primary btn-block ">{{ 'signup.continue' | translate }}</button>
+
+                                        </div>
+                                        <div *ngIf="oathSignup==true && this.linkedin1===false"  class="col-lg-12 ">
+                                            <button  (click)="next2()"  [disabled]="signupFormGeralGroup.value.city == null  || signupFormGeralGroup.value.country == null || (signupFormGeralGroup.value.linkedInProfile == null && signupFormGeralGroup.value.twitter == null )||  signupFormGeralGroup.value.city === '---' " class="btn btn-primary btn-block ">{{ 'signup.continue' | translate }}</button>
+
+                                        </div>
+
+                                        <div *ngIf="oathSignup==true && this.linkedin1===true"  class="col-lg-12 ">
+                                            <button  (click)="next2()"  [disabled]="signupFormGeralGroup.value.city == null  || signupFormGeralGroup.value.country == null ||signupFormGeralGroup.value.linkedInProfile == null || signupFormGeralGroup.value.twitter == null ||  signupFormGeralGroup.value.city === '---' " class="btn btn-primary btn-block ">{{ 'signup.continue' | translate }}</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div> <!--end col-->
+            <div [hidden]="!isThirdStep " class="col-lg-5 col-md-6 mb-5">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ 'signup.title2' | translate }}</h5>
+                        <h6 class="card-title text-center"><b>{{ signupFormEmailGroup.value.email }}</b></h6>
+                        <form class="login-form mt-4"   [formGroup]="signupFormExperienceGroup">
+                             <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.yearsExperience' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="yearsExperience">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+
+                                            <option value="0-3">0-3</option>
+                                            <option value="3-7">3-7</option>
+                                            <option value="7+">7+</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.workedStartup' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="startupExperience">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+
+                                            <option value="yes">{{'profile.expertise.yes' | translate}}</option>
+                                            <option value="no">{{'profile.expertise.no' | translate}}</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.willingRelocate' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="relocate">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+                                            <option value="yes">{{'profile.expertise.yes' | translate}}</option>
+                                            <option value="no">{{'profile.expertise.no' | translate}}</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-12">
+                                     <div class="form-group position-relative">
+                                         <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.remote' | translate }}<span class="text-danger">*</span></label>
+                                         <select  class="form-control custom-select"
+                                                  formControlName="remote">
+                                             <option value="" [disabled]="true"  [selected]="true">---</option>
+                                             <option value="yes">{{'profile.expertise.yes' | translate}}</option>
+                                             <option value="no">{{'profile.expertise.no' | translate}}</option>
+
+
+                                         </select>
+                                     </div>
+                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.equity' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="equity">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+                                            <option value="yes">{{'profile.expertise.yes' | translate}}</option>
+                                            <option value="no">{{'profile.expertise.no' | translate}}</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.commitFulltime' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="commitFulltime">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+                                            <option value="yes">{{'profile.expertise.yes' | translate}}</option>
+                                            <option value="no">{{'profile.expertise.no' | translate}}</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.whenStart' | translate }}<span class="text-danger">*</span></label>
+                                        <select  class="form-control custom-select"
+                                                 formControlName="whenStart">
+                                            <option value="" [disabled]="true"  [selected]="true">---</option>
+                                            <option value="immediately">{{'profile.expertise.immediately' | translate}}</option>
+                                            <option value="in one week">{{'profile.expertise.oneWeek' | translate}}</option>
+                                            <option value="in one month">{{'profile.expertise.oneMonth' | translate}}</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-12">
+                                     <div class="form-group position-relative">
+                                         <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.expertise.bestAt' | translate }}<span class="text-danger">*</span></label>
+                                         <select  class="form-control custom-select"
+                                                  formControlName="bestAt">
+                                             <option value="" [disabled]="true"  [selected]="true">---</option>
+                                             <option value="Fullstack">Fullstack</option>
+                                             <option value="Frontend">Frontend</option>
+                                             <option value="Backend">Backend</option>
+                                             <option value="Devops">Devops</option>
+                                             <option value="Database">Database</option>
+                                             <option value="Design">Design</option>
+
+
+                                         </select>
+                                     </div>
+                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group position-relative moreTool">
+                                        <label style="display: flex" [ngStyle]="{'flex-direction':(this.storageService.getLanguage()==='ar') ? 'justify-content-end' : 'justify-content-start' }">{{ 'profile.aboutMe.label_tell_more' | translate }}<span class="text-danger">*</span></label>
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <img src="../../assets/img/mail.svg" class="fea icon-sm icons" />
+                                        <textarea [(ngModel)]="about"  class="form-control pl-5" placeholder="{{ 'profile.aboutMe.label_tell_more' | translate }}" formControlName="tellMore" maxlength="1000"  minLength="100"  rows="3" required=""></textarea>
+                                        <div class="d-flex justify-content-end w-100">
+                                        <mat-hint [ngStyle]="{'color': about.length<75? 'red' : 'green'}" align="end">{{about.length}} / 75 {{'profile.expertise.characters' | translate }}</mat-hint>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="row justify-content-between ">
+                                        <div class="col-lg-6 mb-lg-0 mb-2" >
+                                            <button  (click)="previous3()"  class="btn btn-outline-primary btn-block ">{{ 'signup.return' | translate }}</button>
+                                        </div>
+                                        <div class="col-lg-6 ">
+                                            <button  (click)="next3()"  [disabled]="signupFormExperienceGroup.invalid  || signupFormExperienceGroup.value.tellMore.length<75 "  class="btn btn-primary btn-block ">{{ 'signup.continue' | translate }}</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div>
+            <div [hidden]="!this.isFourthStep "  class="col-lg-5 col-md-6 mb-5">
+                <div class="card login-page bg-white shadow rounded border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ 'signup.title2' | translate }}</h5>
+                        <h6 class="card-title text-center">{{'signup.all-skills' | translate}}</h6>
+                        <h6 class="card-title text-center"><b>{{ signupFormEmailGroup.value.email }}</b></h6>
+                        <form class="login-form mt-4"   [formGroup]="signupFormExperienceGroup">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="d-flex" >
+                                        <div class="form-group position-relative" style="width: 100%;">
+
+                                            <label>{{ 'profile.expertise.frontend' | translate }} <span class="text-danger"></span></label>
+                                            <mat-form-field class="edit-profile-field-total" appearance="outline" >
+                                                <mat-chip-list #chipListFrontend aria-label="Fruit selection">
+                                                    <mat-chip
+                                                            class="green-chip"
+                                                            color="primary" selected
+                                                            *ngFor="let item of frontend"
+                                                            [selectable]="selectable"
+                                                            [removable]="removable"
+                                                            (removed)="removeFrontend(item)">
+                                                        {{item}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                    <input
+                                                        style="width: 100%"
+                                                        #frontendInput
+                                                        [formControl]="frontendCtrl"
+                                                        [matAutocomplete]="frontendAuto"
+                                                        [matChipInputFor]="chipListFrontend"
+
+                                                        >
+                                                </mat-chip-list>
+                                                <mat-autocomplete #frontendAuto="matAutocomplete" (optionSelected)="selectedFrontend($event)">
+                                                    <mat-option *ngFor="let fruit of filteredFrontend | async" [value]="fruit.value">
+                                                        {{fruit.name}}
+                                                    </mat-option>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+
+                                    <div class="d-flex" >
+                                        <div class="form-group position-relative" style="width: 100%;">
+
+                                            <label>{{ 'profile.expertise.backend' | translate }} <span class="text-danger"></span></label>
+                                            <mat-form-field class="edit-profile-field-total"  appearance="outline" >
+                                                <mat-chip-list #chipListBackend aria-label="Fruit selection">
+                                                    <mat-chip
+                                                            class="green-chip"
+                                                            color="primary" selected
+                                                            *ngFor="let item of backend"
+                                                            [selectable]="selectable"
+                                                            [removable]="removable"
+                                                            (removed)="removeBackend(item)">
+                                                        {{item}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                    <input
+
+                                                        #backendInput
+                                                        style="width: 100%"
+                                                        [formControl]="backendCtrl"
+                                                        [matAutocomplete]="backendAuto"
+                                                        [matChipInputFor]="chipListBackend"
+
+                                                        >
+                                                </mat-chip-list>
+                                                <mat-autocomplete #backendAuto="matAutocomplete" (optionSelected)="selectedBackend($event)">
+                                                    <mat-option *ngFor="let fruit of filteredBackend | async" [value]="fruit.value">
+                                                        {{fruit.name}}
+                                                    </mat-option>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+
+                                    <div class="d-flex" >
+                                        <div class="form-group position-relative" style="width: 100%;">
+
+                                        <label>{{ 'profile.expertise.devops' | translate }} <span class="text-danger"></span></label>
+                                        <mat-form-field class="edit-profile-field-total" appearance="outline" >
+                                            <mat-chip-list #chipList aria-label="Fruit selection">
+                                                <mat-chip
+                                                        class="green-chip"
+                                                        color="primary" selected
+                                                        *ngFor="let item of Devops"
+                                                        [selectable]="selectable"
+                                                        [removable]="removable"
+                                                        (removed)="removeDevops(item)">
+                                                    {{item}}
+                                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                </mat-chip>
+                                                <input
+
+                                                        #devopsInput
+                                                        style="width: 100%"
+                                                        [formControl]="devopsCtrl"
+                                                        [matAutocomplete]="devopsAuto"
+                                                        [matChipInputFor]="chipList"
+
+                                                        >
+                                            </mat-chip-list>
+                                            <mat-autocomplete #devopsAuto="matAutocomplete" (optionSelected)="selectedDevops($event)">
+                                                <mat-option *ngFor="let fruit of filteredDevops | async" [value]="fruit.value">
+                                                    {{fruit.name}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+
+                                    <div class="d-flex" >
+                                        <div class="form-group position-relative" style="width: 100%;">
+
+                                            <label>{{ 'profile.expertise.database' | translate }} <span class="text-danger"></span></label>
+                                            <mat-form-field class="edit-profile-field-total" appearance="outline" >
+                                                <mat-chip-list #databaseChipList aria-label="Fruit selection">
+                                                    <mat-chip
+                                                            class="green-chip"
+                                                            color="primary" selected
+                                                            *ngFor="let item of Database"
+                                                            [selectable]="selectable"
+                                                            [removable]="removable"
+                                                            (removed)="removeDevops(item)">
+                                                        {{item}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                    <input
+
+                                                        #databaseInput
+                                                        style="width: 100%"
+                                                        [formControl]="databaseCtrl"
+                                                        [matAutocomplete]="databaseAuto"
+                                                        [matChipInputFor]="databaseChipList"
+                                                        >
+                                                </mat-chip-list>
+                                                <mat-autocomplete #databaseAuto="matAutocomplete" (optionSelected)="selectedDatabase($event)">
+                                                    <mat-option *ngFor="let fruit of filteredDatabase | async" [value]="fruit.value">
+                                                        {{fruit.name}}
+                                                    </mat-option>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+
+                                    <div class="d-flex" >
+                                        <div class="form-group position-relative" style="width: 100%;">
+
+                                            <label>{{ 'profile.expertise.design' | translate }} <span class="text-danger"></span></label>
+                                            <mat-form-field class="edit-profile-field-total" appearance="outline" >
+                                                <mat-chip-list #designChipList aria-label="Fruit selection">
+                                                    <mat-chip
+                                                            class="green-chip"
+                                                            color="primary" selected
+                                                            *ngFor="let item of Design"
+                                                            [selectable]="selectable"
+                                                            [removable]="removable"
+                                                            (removed)="removeDesign(item)">
+                                                        {{item}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                    <input
+
+                                                        #designInput
+                                                        style="width: 100%"
+                                                        [formControl]="designCtrl"
+                                                        [matAutocomplete]="designAuto"
+                                                        [matChipInputFor]="designChipList"
+                                                    >
+                                                </mat-chip-list>
+                                                <mat-autocomplete #designAuto="matAutocomplete" (optionSelected)="selectedDesign($event)">
+                                                    <mat-option *ngFor="let fruit of filteredDesign | async" [value]="fruit.value">
+                                                        {{fruit.name}}
+                                                    </mat-option>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <div class="row justify-content-between ">
+                                        <div class="col-lg-6 mb-lg-0 mb-2" >
+                                            <button  (click)="previous4()"  class="btn btn-outline-primary btn-block ">{{ 'signup.return' | translate }}</button>
+                                        </div>
+                                        <div class="col-lg-6 ">
+                                            <button  (click)="signup()"  [disabled]="signupFormExperienceGroup.invalid  "  class="btn btn-primary btn-block ">{{ 'signup.continue' | translate }}</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!---->
+            </div>
+
+        </div><!--end row-->
+    </div> <!--end container-->
+</section>
+<section class="signup" [hidden]="!allOk" >
+    <h3 *ngIf="oathSignup==false" class="signup-success-verify">{{ 'signup.verify' | translate }}</h3>
+    <h3 *ngIf="oathSignup==true" class="signup-success-verify">{{ 'signup.confirm_account' | translate }}</h3>
+    <h3 *ngIf="oathSignup==false" class="signup-success-sent">{{ 'signup.sent_email' | translate }}</h3>
+    <h3 *ngIf="oathSignup==false" class="signup-success-email">{{ signupFormEmailGroup.value.email }}</h3>
+    <h3 *ngIf="oathSignup==false" class="signup-success-check">{{ 'signup.check' | translate }}</h3>
+    <div class="d-flex justify-content-center w-100">
+    <div class="w-lg-25">
+        <button  *ngIf="oathSignup==false"   class="ml-md-5 mr-md-5" (click)="resend()" class="resend-button" mat-raised-button>{{ 'signup.resend' | translate }}</button>
+
+    </div>
+    </div>
+    <button   *ngIf="oathSignup==true"  class="ml-md-5 mr-md-5" (click)="navigate()" class="resend-button" mat-raised-button>{{ 'signup.go_login' | translate }}</button>
+
+</section>

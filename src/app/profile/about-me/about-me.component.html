@@ -1,0 +1,22 @@
+<mat-card class="p-0" style="height: 100%">
+  <div class="page-card-header d-flex justify-content-between" >
+    <mat-icon style="cursor: pointer" (click)="navigateBack()" [inline]="true">keyboard_arrow_left</mat-icon>
+    <span class="flex-1 title-edit-personal">{{ 'profile.aboutMe.title' | translate }}</span>
+  </div>
+  <mat-card-content>
+    <div class="d-flex"  style="padding-left: 15px; padding-right: 15px;">
+      <form  [formGroup]="editFormGeralGroup" style="width: 100%">
+        <h2  class="more-about d-flex w-100" [ngStyle]="{'justify-content':(this.storageService.getLanguage()==='ar') ? 'flex-end' : 'flex-start' }" >{{ 'profile.aboutMe.label_tell_more' | translate }}</h2>
+        <mat-form-field class="edit-profile-field-total" appearance="outline">
+          <textarea class="more-about-field" formControlName="tellMore" #message maxlength="1000" autocomplete="off" [(ngModel)]="curUser.tellMore" matInput placeholder="{{ 'profile.aboutMe.field_tell_more' | translate }}"></textarea>
+          <mat-hint [ngStyle]="{'color': editFormGeralGroup.invalid? 'red' : 'green'}" align="end">{{message.value.length}} / 1000</mat-hint>
+        </mat-form-field>
+      </form>
+    </div>
+    <br/>
+    <br/>
+    <div class="d-flex" style="justify-content: center; padding-left: 15px; padding-right: 15px;">
+      <button (click)="update()" [disabled]="editFormGeralGroup.invalid" class="update-button  w-50" mat-raised-button>{{ 'profile.aboutMe.save' | translate }}</button>
+    </div>
+  </mat-card-content>
+</mat-card>
